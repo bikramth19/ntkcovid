@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> HUL Chart Design - Advanced Charting</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="https://code.highcharts.com/stock/highstock.js"></script> -->
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+
+    <script src="https://use.fontawesome.com/c288cfd3de.js"></script>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="col-md-12 row mt-3">
+        <!--div class="col-md-2 border-right">
+          <input type="search" class="form-control mt-3" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div-->
+
+        <div class="col-md-12">
+            <div id="legend" class="float_left">
+              <div class="float-right legend_right_button" style="padding: 0px 0;">
+						    <!-- <a href="#" id="btn"> Full Screen</a> -->
+                <!-- Small button groups (default and split) -->
+                  <!--div class="btn-group">
+                    <button class="btn btn-danger btn-sm dropdown-toggle" type="button" data-toggle="dropdown" style="margin: -10px 0 0;"  aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-bar-chart"></i> Chart Type
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" id="btn" href="#"> <i class="fa fa-expand"></i> &nbsp; Full Screen</a>
+                      <a class="dropdown-item" id="exportPDF" href="#"> <i class="fa fa-file-pdf-o"></i>  &nbsp; PDF</a>
+                      <<a class="dropdown-item" id="pngDownload" href="#"> <i class="fa fa-file-image-o"></i>  &nbsp; PNG</a>
+                      <a class="dropdown-item" id="excelDownload" href="#"> <i class="fa fa-file-excel-o"></i>  &nbsp; XLS</a>
+                    </div>
+                  </div-->
+              </div>
+            </div>
+
+            <div id="container" style="height: 550px;width: 100%"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  $(function () {
+    let chart = Highcharts.chart('container', {
+
+      chart:{
+        type: 'column'
+      },
+
+      title: { text: 'Ningthoukhong Covid Dashboard' },
+      subtitle: { text: '' },
+      yAxis: [{
+          title: { text: '' },
+          gridLineColor: '#fff',
+          gridLineWidth: 0,
+          reversedStacks: false,
+          labels: {
+          enabled: false
+        }
+      },
+      { // Secondary yAxis
+        title: {text: "Brand Price/100 ml"},
+    		gridLineColor: 'transparent',
+    		lineColor: 'transparent',
+    		tickColor: 'transparent',
+    		gridTextColor: '#ffffff',
+        opposite: true
+      }],
+      xAxis: [{
+        categories: ['Fanola', 'Neutrogena', 'Loreal', 'Dove', 'Wow', 'OGX', 'TIGI', 'Alpecin']
+      },
+      {
+        "linkedTo":0,"className":"fontStyle_italic","categories":["71.9%(28.3%)","151.6%(76.4%)","100.9%(39.9%)", "2323", "3424", "435", "7646%", "$ewr"],"lineWidth":0,"opposite":0,
+        "plotBands":[{"from":0.5,"to":2.5,"borderColor":"#cccccc","borderWidth":1,"color":"rgba(236, 239, 241, 0.8)"}]
+      }],
+
+
+      legend: {
+          layout: 'horizontal',
+          align: 'center',
+          verticalAlign: 'bottom',
+          enabled: false
+      },
+
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          pointWidth: 60,
+          borderColor: null
+        },
+        series: {
+          shadow: false,
+            label: {
+              connectorAllowed: false
+            },
+            dataLabels: {
+              enabled: true,
+              inside: true,
+              style: {
+                textOutline: 0
+              },
+              formatter: function() {
+                if (this.y > 0) {
+                  return this.y;
+                }
+              }
+            },
+        }
+      },
+
+      credits: { enabled: false },
+      exporting: { enabled: true },
+
+      series: [
+
+        {"name":"Rest of Market","visible":"true","id":"button1","data":[{"y":33444,"brand":"Rest of Market","ppml":0.07},{"y":15398,"brand":"Rest of Market","ppml":0.03},{"y":25454.9,"brand":"Rest of Market","ppml":0.03},{"y":4000,"brand":"Rest of Market","ppml":0.03},{"y":3899,"brand":"Rest of Market","ppml":0.01},{"y":0,"brand":"Rest of Market","ppml":0.02},{"y":4.2,"brand":"Rest of Market","ppml":0.01},{"y":1.6,"brand":"Rest of Market","ppml":0.01}], color: '#003f5c'},
+
+        {"name":"Fanola","visible":"true","id":"button2","data":[{"y":23320,"brand":"Fanola","size":"-","oth_size":"-","t_size":"-","ppml":0},{"y":14250,"brand":"Fanola","size":"-","oth_size":"-","t_size":"-","ppml":0},{"y":0,"brand":"Fanola","size":"-","oth_size":"-","t_size":"-","ppml":0},{"y":0,"brand":"Fanola","size":"-","oth_size":"-","t_size":"-","ppml":0},{"y":0.7,"brand":"Fanola","size":"350 ml,370 ml","oth_size":"1pack","t_size":"350 ml,370 ml","ppml":0.02},{"y":0,"brand":"Fanola","size":"-","oth_size":"-","t_size":"-","ppml":0},{"y":1.4,"brand":"Fanola","size":"1000 ml","oth_size":"1pack","t_size":"1000 ml","ppml":0.01},{"y":0,"brand":"Fanola","size":"2000 ml","oth_size":"2pack","t_size":"1000 ml","ppml":0.01}
+    ], color: '#2f4b7c'},
+      {
+          name: 'Sales & Distribution',
+          type: 'column',
+          "id":"button3",
+          data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 3387],
+          type: 'column',
+          color: '#665191'
+      }, {
+          name: 'Project Development',
+          "id":"button4",
+          data: [null, null, 7988, 2169, 5112, 12452, 24400, 14227],
+          type: 'column',
+          color: '#a05195'
+
+      }, {
+          name: 'Other',
+          "id":"button5",
+          data: [5948, 8105, 11248, 8989, 11816, 18274, 18111],
+          type: 'column',
+          color: '#d45087'
+      },
+      {
+        name: '',
+        type: 'spline',
+        color: '#ffa600',
+        "id":"button6",
+        "yAxis":1,
+        data: [7.0, 16.9, 9.5, 11.5, 13.2, 10.5, 25.2, 26.5],
+        tooltip: {
+            valueSuffix: ' M',
+            valuePrefix: '$'
+        }
+      }
+    ],
+
+      scrollbar: {
+        enabled: true,
+        barBackgroundColor: 'gray',
+        barBorderRadius: 7,
+        barBorderWidth: 0,
+        buttonBackgroundColor: 'gray',
+        buttonBorderWidth: 0,
+        buttonArrowColor: 'yellow',
+        buttonBorderRadius: 7,
+        rifleColor: 'yellow',
+        trackBackgroundColor: 'white',
+        trackBorderWidth: 1,
+        trackBorderColor: 'silver',
+        trackBorderRadius: 7
+      },
+
+      responsive: {
+          rules: [{
+              condition: {
+                  maxWidth: 500
+              },
+              chartOptions: {
+                  legend: {
+                      layout: 'horizontal',
+                      align: 'center',
+                      verticalAlign: 'bottom'
+                  }
+              }
+          }]
+      }
+
+
+    },
+
+    function (chart) {
+  	       //Creating the dynamic custom legend
+  	       var amount = chart.series.length;
+  	       var $legend = $('#legend');
+  	       for(var i = 0; i < amount; i++) {
+  	         var disabled = "";
+  	          if (chart.series[i].visible == false) {
+  	            disabled = 'chart_disabled';
+  	          } else {
+  	            disabled = '';
+  	          }
+  	           $legend.append('<button class="legend_button '+ disabled +' " data-id="' + chart.series[i].options.id + '"><span style="color:' + chart.series[i].color  +  ';" class="fa fa-circle"></span> ' + chart.series[i].name + ' </button>');
+  	       }
+
+  	       // bind events to the custom legend
+  	       $(document).on('click', 'button', function (e) {
+  	           var el = e.target;
+  	               id = el.getAttribute('data-id'),
+  	               series = chart.get(id);
+  	               series.setVisible(!series.visible);
+  	               if (series.visible) {
+  	                    el.disabled = false;
+  	                    el.classList.remove("chart_disabled");
+  	                } else {
+  	                    el.classList.add("chart_disabled");
+  	                }
+  	       });
+  	     });
+
+         // end
+
+         let btn = document.getElementById("btn")
+
+       btn.addEventListener('click', function() {
+         Highcharts.FullScreen = function(container) {
+           this.init(container.parentNode); // main div of the chart
+         };
+
+         Highcharts.FullScreen.prototype = {
+           init: function(container) {
+             if (container.requestFullscreen) {
+               container.requestFullscreen();
+             } else if (container.mozRequestFullScreen) {
+               container.mozRequestFullScreen();
+             } else if (container.webkitRequestFullscreen) {
+               container.webkitRequestFullscreen();
+             } else if (container.msRequestFullscreen) {
+               container.msRequestFullscreen();
+             }
+           }
+         };
+         chart.fullscreen = new Highcharts.FullScreen(chart.container);
+       })
+
+       $('#exportPDF').click(function() {
+          chart.exportChart({
+            type: 'application/pdf',
+            filename: 'stack_chart'
+          });
+        });
+
+        // Export TO PNG
+     $('#pngDownload').click(function () {
+         var chart = $('#container').highcharts();
+         chart.exportChartLocal({
+           type: 'image/png'
+         });
+     });
+
+     // Export TO CSV ??
+     $('#csvDownload').click(function () {
+         var chart = $('#container').highcharts();
+         chart.exportChartLocal({
+           type: 'text/csv'
+         });
+     });
+
+      // Export TO XLS ??
+     $('#excelDownload').click(function () {
+         var chart = $('#container').highcharts();
+         chart.exportChartLocal({
+           type: 'application/vnd.ms-excel'
+         });
+     });
+  });
+</script>
+
+<style type="text/css">
+  .legend_button {
+    color: #444 !important;
+    border-radius: 12px;
+    padding: 1px 18px 1px 5px;
+    margin: 0 13px 0 0;
+    border: none;
+    background: #eee;
+    align-items: center;
+    display: inline-flex;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .chart_disabled {
+  	color: #999 !important;
+  }
+  .chart_disabled .fa {
+  	color: #c0c0c1 !important;
+  }
+  .legend_button:hover, .legend_button:hover span {
+    background: #02029d;
+    color: #fff !important;
+  }
+  .legend_button:focus, .legend_button:focus span {
+  	background: #eee;
+    outline: none !important;
+  }
+  .legend_button span {
+    font-size: 20px;
+    padding: 0 6px 0 0;
+  }
+  #legend, #legend1 {
+    border-bottom: 1px solid #eee;
+    padding: 4px 5px 4px 2em;
+  }
+  .dropdown-item { font-size: 13px; }
+
+</style>
+
+
+  </body>
+</html>

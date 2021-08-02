@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> HUL Chart Design - Advanced Charting</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://use.fontawesome.com/c288cfd3de.js"></script>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row mt-3">
+
+        <div class="col-md-12">
+            <div id="legend"> </div>
+
+            <div id="container1" style="height: 550px;width: 99%"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  $(function() {
+    var options = {
+      chart: {
+        renderTo: 'container1',
+        type: 'column'
+      },
+      title: {
+        text: 'Pandemic COVID-19 (3d Wave) : Ningthoukhong Covid Chart'
+      },
+      subtitle: {
+        text: '18th April - 1st August 2021'
+      },
+      plotOptions: {
+        column: {
+          depth: 0
+        }
+      },
+      series: [],
+      exporting: { enabled: true, showTable: true },
+      xAxis: {
+        categories: ['Ward No 1', 'Ward No 2', 'Ward No 3', 'Ward No 4', 'Ward No 5', 'Ward No 6', 'Ward No 7', 'Ward No 8', 'Ward No 9', 'Ward No 10', 'Ward No 11', 'Ward No 12', 'Ward No 13', 'Ward No 14']
+      },
+      yAxis: [{
+          title: { text: 'No. of COVID - 19 Case' },
+          gridLineColor: '#eeeeee',
+          gridLineWidth: 1,
+          reversedStacks: false,
+          labels: {
+            enabled: true
+          }
+      },
+      { // Secondary yAxis
+        title: {text: "Total Positive Case"},
+    		gridLineColor: '#eeeeee',
+    		lineColor: '#eeeeee',
+    		tickColor: '#eeeeee',
+    		gridTextColor: '#eeeeee',
+        opposite: true
+      }],
+      plotOptions: {
+        column: {
+          pointWidth: 25,
+          borderColor: null
+        },
+        series: {
+          shadow: false,
+            label: {
+              connectorAllowed: false
+            },
+            dataLabels: {
+              enabled: true,
+              inside: true,
+              style: {
+                textOutline: 0,
+                color: '#111111'
+              }
+            },
+        }
+      },
+      credits: { enabled: false }
+
+    };
+
+    $.ajax({
+      type: "GET",
+      url: 'chartjson.json',
+      dataType: "json",
+      success: function(list) {
+        $.each(list, function(i, item) {
+          options.series.push({
+            name: item.name,
+            data: item.data,
+            color: item.color,
+            type: item.type,
+            id: item.id
+          });
+        });
+
+        var chart = new Highcharts.Chart(options);
+
+        // Activate the sliders
+        $('#sliders input').on('input change', function() {
+          showValues();
+          chart.redraw(false);
+        });
+        showValues();
+      }
+    });
+  },
+  function (chart) {
+         //Creating the dynamic custom legend
+         var amount = chart.series.length;
+         var $legend = $('#legend');
+         for(var i = 0; i < amount; i++) {
+           var disabled = "";
+            if (chart.series[i].visible == false) {
+              disabled = 'chart_disabled';
+            } else {
+              disabled = '';
+            }
+             $legend.append('<button class="legend_button '+ disabled +' " data-id="' + chart.series[i].options.id + '"><span style="color:' + chart.series[i].color  +  ';" class="fa fa-circle"></span> ' + chart.series[i].name + ' </button>');
+         }
+
+         // bind events to the custom legend
+         $(document).on('click', 'button', function (e) {
+             var el = e.target;
+                 id = el.getAttribute('data-id'),
+                 series = chart.get(id);
+                 series.setVisible(!series.visible);
+                 if (series.visible) {
+                      el.disabled = false;
+                      el.classList.remove("chart_disabled");
+                  } else {
+                      el.classList.add("chart_disabled");
+                  }
+         });
+       });
+
+</script>
+
+<style type="text/css">
+  .legend_button {
+    color: #444 !important;
+    border-radius: 12px;
+    padding: 1px 18px 1px 5px;
+    margin: 0 13px 0 0;
+    border: none;
+    background: #eee;
+    align-items: center;
+    display: inline-flex;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .chart_disabled {
+  	color: #999 !important;
+  }
+  .chart_disabled .fa {
+  	color: #c0c0c1 !important;
+  }
+  .legend_button:hover, .legend_button:hover span {
+    background: #02029d;
+    color: #fff !important;
+  }
+  .legend_button:focus, .legend_button:focus span {
+  	background: #eee;
+    outline: none !important;
+  }
+  .legend_button span {
+    font-size: 20px;
+    padding: 0 6px 0 0;
+  }
+  #legend, #legend1 {
+    border-bottom: 1px solid #eee;
+    padding: 4px 5px 4px 2em;
+  }
+  .dropdown-item { font-size: 13px; }
+
+  .highcharts-data-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: white;
+    min-width: 100%;
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 0.9em;
+  }
+
+  .highcharts-data-table td,
+  .highcharts-data-table th,
+  .highcharts-data-table caption {
+    border: 1px solid silver;
+    padding: 3px 10px;
+  }
+
+  .highcharts-data-table td { text-align: center; }
+
+  .highcharts-data-table tr:nth-child(even),
+  .highcharts-data-table thead tr {
+    background: #f8f8f8;
+  }
+
+  .highcharts-data-table tr:hover {
+    background: #C9D8B6;
+  }
+
+  .highcharts-data-table caption {
+    border-bottom: none;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+</style>
+
+
+  </body>
+</html>
