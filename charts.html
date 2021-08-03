@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Covid 19 chart - Ningthoukhong</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -23,15 +23,13 @@
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-collapse layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="https://shestrong.in/assets/img/favicon.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -130,16 +128,16 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
+                  <i class="fab fa-artstation mr-1"></i>
+                  Pandemic COVID-19 (3d Wave) : Ningthoukhong Covid Chart
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab"> <i class="far fa-chart-bar"></i> Bar Chart</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab"><i class="fas fa-chart-pie"></i> Donut</a>
                     </li>
                   </ul>
                 </div>
@@ -147,11 +145,12 @@
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                   </div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative;height: 400px;">
+                    <div class="" id="container1" style="height: 400px;width: 100%">
+
+                    </div>
+                  </div>
+                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 400px;">
                     <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                   </div>
                 </div>
@@ -165,143 +164,98 @@
           </section>
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
+          <section class="col-lg-12">
 
-            <!-- Map card -->
-            <div class="card bg-gradient-primary">
-              <div class="card-header border-0">
-                <h3 class="card-title">
-                  <i class="fas fa-map-marker-alt mr-1"></i>
-                  Visitors
-                </h3>
-                <!-- card tools -->
-                <div class="card-tools">
-                  <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-                    <i class="far fa-calendar-alt"></i>
-                  </button>
-                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <div class="card-body">
-                <div id="world-map" style="height: 250px; width: 100%;"></div>
-              </div>
-              <!-- /.card-body-->
-              <div class="card-footer bg-transparent">
-                <div class="row">
-                  <div class="col-4 text-center">
-                    <div id="sparkline-1"></div>
-                    <div class="text-white">Visitors</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <div id="sparkline-2"></div>
-                    <div class="text-white">Online</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <div id="sparkline-3"></div>
-                    <div class="text-white">Sales</div>
-                  </div>
-                  <!-- ./col -->
-                </div>
-                <!-- /.row -->
-              </div>
-            </div>
-            <!-- /.card -->
-
-            <!-- solid sales graph -->
-            <div class="card bg-gradient-info">
-              <div class="card-header border-0">
-                <h3 class="card-title">
-                  <i class="fas fa-th mr-1"></i>
-                  Sales Graph
-                </h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer bg-transparent">
-                <div class="row">
-                  <div class="col-4 text-center">
-                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
-                           data-fgColor="#39CCCC">
-
-                    <div class="text-white">Mail-Orders</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
-                           data-fgColor="#39CCCC">
-
-                    <div class="text-white">Online</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
-                           data-fgColor="#39CCCC">
-
-                    <div class="text-white">In-Store</div>
-                  </div>
-                  <!-- ./col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.card-footer -->
-            </div>
-            <!-- /.card -->
-
-            <!-- Calendar -->
-            <div class="card bg-gradient-success">
-              <div class="card-header border-0">
-
-                <h3 class="card-title">
-                  <i class="far fa-calendar-alt"></i>
-                  Calendar
-                </h3>
-                <!-- tools card -->
-                <div class="card-tools">
-                  <!-- button with a dropdown -->
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                      <i class="fas fa-bars"></i>
+            <div class="row">
+              <!-- Map card -->
+              <div class="col-md-6">
+                <div class="card bg-gradient-primary">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    Visitors
+                  </h3>
+                  <!-- card tools -->
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
+                      <i class="far fa-calendar-alt"></i>
                     </button>
-                    <div class="dropdown-menu" role="menu">
-                      <a href="#" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">View calendar</a>
-                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
                   </div>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
+                  <!-- /.card-tools -->
                 </div>
-                <!-- /. tools -->
+                <div class="card-body">
+                  <div id="world-map" style="height: 250px; width: 100%;"></div>
+                </div>
+                <!-- /.card-body-->
+                <div class="card-footer bg-transparent">
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <div id="sparkline-1"></div>
+                      <div class="text-white">Visitors</div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-4 text-center">
+                      <div id="sparkline-2"></div>
+                      <div class="text-white">Online</div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-4 text-center">
+                      <div id="sparkline-3"></div>
+                      <div class="text-white">Sales</div>
+                    </div>
+                    <!-- ./col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
               </div>
-              <!-- /.card-header -->
-              <div class="card-body pt-0">
-                <!--The calendar -->
-                <div id="calendar" style="width: 100%"></div>
+              <!-- /.card -->
               </div>
-              <!-- /.card-body -->
+
+              <div class="col-md-6">
+              <!-- Calendar -->
+                <div class="card bg-gradient-warning" style="height: 450px;">
+                <div class="card-header border-0">
+
+                  <h3 class="card-title">
+                    <i class="far fa-calendar-alt"></i>
+                    Calendar
+                  </h3>
+                  <!-- tools card -->
+                  <div class="card-tools">
+                    <!-- button with a dropdown -->
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                        <i class="fas fa-bars"></i>
+                      </button>
+                      <div class="dropdown-menu" role="menu">
+                        <a href="#" class="dropdown-item">Add new event</a>
+                        <a href="#" class="dropdown-item">Clear events</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">View calendar</a>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                  <!-- /. tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body pt-0">
+                  <!--The calendar -->
+                  <div id="calendar" style="width: 100%"></div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+              </div>
             </div>
-            <!-- /.card -->
           </section>
           <!-- right col -->
         </div>
@@ -333,6 +287,9 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -357,5 +314,142 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
+<!-- Highcharts -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+<script type="text/javascript">
+  $(function() {
+    var options = {
+      chart: {
+        renderTo: 'container1',
+        type: 'column'
+      },
+      title: {
+        text: ''
+      },
+      subtitle: {
+        text: ''
+      },
+      plotOptions: {
+        column: {
+          depth: 0
+        }
+      },
+      series: [],
+      exporting: {
+        enabled: true,
+        // showTable: true
+      },
+      xAxis: {
+        categories: ['Ward No 1', 'Ward No 2', 'Ward No 3', 'Ward No 4', 'Ward No 5', 'Ward No 6', 'Ward No 7', 'Ward No 8', 'Ward No 9', 'Ward No 10', 'Ward No 11', 'Ward No 12', 'Ward No 13', 'Ward No 14']
+      },
+      yAxis: [{
+          title: { text: 'No. of COVID - 19 Case' },
+          gridLineColor: '#eeeeee',
+          gridLineWidth: 1,
+          reversedStacks: false,
+          labels: {
+            enabled: true
+          }
+      },
+      { // Secondary yAxis
+        title: {text: "Total Positive Case"},
+    		gridLineColor: '#eeeeee',
+    		lineColor: '#eeeeee',
+    		tickColor: '#eeeeee',
+    		gridTextColor: '#eeeeee',
+        opposite: true
+      }],
+      plotOptions: {
+        column: {
+          pointWidth: 25,
+          borderColor: null
+        },
+        series: {
+          shadow: false,
+            label: {
+              connectorAllowed: false
+            },
+            dataLabels: {
+              enabled: true,
+              inside: true,
+              style: {
+                textOutline: 0,
+                color: '#111111'
+              }
+            },
+        }
+      },
+      credits: { enabled: false }
+
+    };
+
+    $.ajax({
+      type: "GET",
+      url: 'chartjson.json',
+      dataType: "json",
+      success: function(list) {
+        $.each(list, function(i, item) {
+          options.series.push({
+            name: item.name,
+            data: item.data,
+            color: item.color,
+            type: item.type,
+            id: item.id
+          });
+        });
+
+        var chart = new Highcharts.Chart(options);
+
+        // Activate the sliders
+        $('#sliders input').on('input change', function() {
+          showValues();
+          chart.redraw(false);
+        });
+        showValues();
+      }
+    });
+  },
+  function (chart) {
+         //Creating the dynamic custom legend
+         var amount = chart.series.length;
+         var $legend = $('#legend');
+         for(var i = 0; i < amount; i++) {
+           var disabled = "";
+            if (chart.series[i].visible == false) {
+              disabled = 'chart_disabled';
+            } else {
+              disabled = '';
+            }
+             $legend.append('<button class="legend_button '+ disabled +' " data-id="' + chart.series[i].options.id + '"><span style="color:' + chart.series[i].color  +  ';" class="fa fa-circle"></span> ' + chart.series[i].name + ' </button>');
+         }
+
+         // bind events to the custom legend
+         $(document).on('click', 'button', function (e) {
+             var el = e.target;
+                 id = el.getAttribute('data-id'),
+                 series = chart.get(id);
+                 series.setVisible(!series.visible);
+                 if (series.visible) {
+                      el.disabled = false;
+                      el.classList.remove("chart_disabled");
+                  } else {
+                      el.classList.add("chart_disabled");
+                  }
+         });
+       });
+
+</script>
+<style media="screen">
+  .bootstrap-datetimepicker-widget table {
+    height: 400px;
+  }
+</style>
+
 </body>
 </html>
