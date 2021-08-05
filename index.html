@@ -3371,7 +3371,7 @@
    var table =  $('#example').DataTable({
      // "dom": 'rtS',
      "dom": '<"top">rt<"bottom"i>rp<"clear">',
-     // "order": [[ 2, "asc" ]],
+     "order": [[ 0, "desc" ]],
      initComplete: function () {
         var column = this.api().column(2);
         var select = $('<select class="filter select2 browser-default"><option value="">All</option></select>')
