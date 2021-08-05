@@ -157,10 +157,11 @@
                   <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 100%;">
                     <div class="row">
                       <div class="col-md-2 float_left pl-0 pr-0 ml-3 mr-3">
-                        <h6 class="p-0 m-0" style="float: left;"> <label for="">Select Ward :</label> </h6 >
+                        <h6 class="pt-1 mr-2" style="float: left;"> <label for="">Select Ward :</label> </h6 >
                         <div id="selectTriggerFilter1"></div>
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-3" style="margin: 0 0 0 0%;"><input id="mySearchfirst1" class="search_mltable table_search" type="text" title="option1" placeholder="Search..."/></div>
+                      <!-- <div class="col-md-2">
                         <div class="select-wrapper">Select Gender :</label>
                           <select id="dropdown1">
                             <option value="male">All</option>
@@ -168,7 +169,7 @@
                             <option value="Male">Male</option>
                           </select>
        								  </div>
-                      </div>
+                      </div> -->
                     </div>
                     <table id="example" class="table table-bordered table-hover" style="width: 100%;">
                         <thead>
@@ -3386,9 +3387,13 @@
      }
    });
 
-   $('#dropdown1').on('change', function () {
-       table.columns(4).search( this.value ).draw();
-   } );
+   $('#mySearchfirst1').on( 'keyup click', function () {
+     table.table().columns(1).search($(this).val()  ).draw();
+   });
+
+   // $('#dropdown1').on('change', function () {
+   //     table.columns(4).search( this.value ).draw();
+   // } );
 
    const dates = new Date().toUTCString().slice(5, 16);
    document.getElementById("today_date").innerHTML = dates;
@@ -3536,6 +3541,9 @@
   }
   .bottom {width: 76%;}
 	.highcharts-series-label text { fill: transparent !important; }
+  #selectTriggerFilter1 select {
+    height: 30px;
+  }
 </style>
 
 </body>
