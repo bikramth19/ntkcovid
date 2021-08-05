@@ -3265,7 +3265,7 @@
                 <div class="info-box">
                   <div class="info-box-content">
                     <span class="info-box-text">Chart Joinly Prepared by</span>
-                    <span class="info-box-number">03 Aug 21, 9.30pm</span>
+                    <span class="info-box-number" id="today_date"></span>
                   </div>
 
                   <span class="info-box-icon"> <img src="nydo.jpeg" alt=""> </span> &nbsp;&nbsp;&nbsp;
@@ -3389,6 +3389,9 @@
    $('#dropdown1').on('change', function () {
        table.columns(4).search( this.value ).draw();
    } );
+
+   const dates = new Date().toUTCString().slice(5, 16);
+   document.getElementById("today_date").innerHTML = dates;
 
  });
 </script>
