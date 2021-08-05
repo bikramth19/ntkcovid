@@ -68,7 +68,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>340</h3>
+                <h3> <span id="totalcovid"></span> </h3>
 
                 <p>Total Positive Case</p>
               </div>
@@ -82,7 +82,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>223 <!--sup style="font-size: 20px">%</sup--></h3>
+                <h3> <span id="totalrecover"></span> </h3>
 
                 <p>Total fully recovered Case</p>
               </div>
@@ -96,7 +96,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>70</h3>
+                <h3> <span id="totalactive"></span> </h3>
 
                 <p>Total Active Case</p>
               </div>
@@ -110,7 +110,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>14</h3>
+                <h3> <span id="totaldead"></span> </h3>
 
                 <p>Total Dead Case</p>
               </div>
@@ -3339,9 +3339,59 @@
 
 <!-- DataTables  & Plugins -->
 
+<script type="text/javascript">
+   var settings = {
+     "async": true,
+     "crossDomain": true,
+     "url": "contents.json",
+     "method": "GET"
+   }
+
+   $.ajax(settings).done(function (response) {
+     console.log(response);
+
+     var content = response.totalcovid;
+     $("#totalcovid").append(content);
+
+     var content = response.totalrecover;
+     $("#totalrecover").append(content);
+
+     var content = response.totalactive;
+     $("#totalactive").append(content);
+
+     var content = response.totaldead;
+     $("#totaldead").append(content);
+
+   });
+</script>
+
 
 <script type="text/javascript">
-  $(document).ready(function() {
+  $(document).ready(function() {<script type="text/javascript">
+     var settings = {
+       "async": true,
+       "crossDomain": true,
+       "url": "contents.json",
+       "method": "GET"
+     }
+
+     $.ajax(settings).done(function (response) {
+       console.log(response);
+
+       var content = response.totalcovid;
+       $("#totalcovid").append(content);
+
+       var content = response.totalrecover;
+       $("#totalrecover").append(content);
+
+       var content = response.totalactive;
+       $("#totalactive").append(content);
+
+       var content = response.totaldead;
+       $("#totaldead").append(content);
+
+     });
+  </script>
    var table =  $('#example').DataTable({
      // "dom": 'rtS',
      "dom": '<"top">rt<"bottom"i>rp<"clear">',
