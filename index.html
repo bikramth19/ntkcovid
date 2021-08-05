@@ -3367,31 +3367,7 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function() {<script type="text/javascript">
-     var settings = {
-       "async": true,
-       "crossDomain": true,
-       "url": "contents.json",
-       "method": "GET"
-     }
-
-     $.ajax(settings).done(function (response) {
-       console.log(response);
-
-       var content = response.totalcovid;
-       $("#totalcovid").append(content);
-
-       var content = response.totalrecover;
-       $("#totalrecover").append(content);
-
-       var content = response.totalactive;
-       $("#totalactive").append(content);
-
-       var content = response.totaldead;
-       $("#totaldead").append(content);
-
-     });
-  </script>
+  $(document).ready(function() {
    var table =  $('#example').DataTable({
      // "dom": 'rtS',
      "dom": '<"top">rt<"bottom"i>rp<"clear">',
