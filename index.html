@@ -143,6 +143,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#sales-chart" data-toggle="tab"><i class="fas fa-table"></i> Name List</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#dead_list" data-toggle="tab"><i class="fas fa-table"></i> Total Dead List</a>
+                    </li>
                   </ul>
                 </div>
               </div><!-- /.card-header -->
@@ -156,6 +159,9 @@
                   </div>
                   <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 100%;">
                     <div id="includeTable"></div>
+                  </div>
+                  <div class="chart tab-pane" id="dead_list" style="position: relative; height: 100%;">
+                    <div id="includeDeadList"></div>
                   </div>
                 </div>
               </div><!-- /.card-body -->
@@ -285,6 +291,10 @@
 
      $(function(){
          $("#includeTable").load("table_list.html");
+     });
+
+     $(function(){
+         $("#includeDeadList").load("dead_list.html");
      });
 
    });
