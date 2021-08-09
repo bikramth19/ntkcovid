@@ -1,0 +1,3550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Covid 19 chart - Ningthoukhong</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+</head>
+<body class="hold-transition sidebar-collapse layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="https://shestrong.in/assets/img/logo.png" alt="AdminLTELogo" height="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">SheStrong Services</a>
+      </li>
+    </ul>
+
+    <h3 class="text-center" style="margin-left: 28%">Ningthoukhong Covid 19 Chart</h3>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+    <!-- Main content -->
+    <section class="content pt-3">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3> <span id="totalcovid"></span> </h3>
+
+                <p>Total Positive Case</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-ios-people"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3> <span id="totalrecover"></span> </h3>
+
+                <p>Total fully recovered Case</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-android-walk"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3> <span id="totalactive"></span> </h3>
+
+                <p>Total Active Case</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-eye"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3> <span id="totaldead"></span> </h3>
+
+                <p>Total Dead Case</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bonfire"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-12 connectedSortable">
+
+
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fab fa-artstation mr-1"></i>
+                  Pandemic COVID-19 (2nd Wave) : Ningthoukhong Covid Chart
+                </h3>
+                <div class="card-tools">
+                  <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab"> <i class="far fa-chart-bar"></i> Wardwise view</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab"><i class="fas fa-table"></i> Name List</a>
+                    </li>
+                  </ul>
+                </div>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <!-- Morris chart - Sales -->
+                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative;height: 400px;">
+                    <div class="" id="container1" style="height: 400px;width: 100%">
+
+                    </div>
+                  </div>
+                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 100%;">
+                    <div class="row">
+                      <div class="col-md-2 float_left pl-0 pr-0 ml-3 mr-3">
+                        <h6 class="pt-1 mr-2" style="float: left;"> <label for="">Select Ward :</label> </h6 >
+                        <div id="selectTriggerFilter1"></div>
+                      </div>
+                      <div class="col-md-3" style="margin: 0 0 0 0%;"><input id="mySearchfirst1" class="search_mltable table_search" type="text" title="option1" placeholder="Search..."/></div>
+                      <!-- <div class="col-md-2">
+                        <div class="select-wrapper">Select Gender :</label>
+                          <select id="dropdown1">
+                            <option value="male">All</option>
+                            <option value="female">Female</option>
+                            <option value="Male">Male</option>
+                          </select>
+       								  </div>
+                      </div> -->
+                    </div>
+                    <table id="example" class="table table-bordered table-hover" style="width: 100%;">
+                        <thead>
+                          <tr class="row0">
+                            <th class="">Sl. No</th>
+                            <th class="">Name </th>
+                            <th class="">Ward No.</th>
+                            <th class="">Age</th>
+                            <th class="">Gender</th>
+                            <th class="">Date of COVID +</th>
+                            <th class="">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="row1">
+                            <td class="">1</td>
+                            <td class="">MOIRANGTHEM JIBAN SINGH</td>
+                            <td class="">8</td>
+                            <td class="">38</td>
+                            <td class="">Male</td>
+                            <td class="">18/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row2">
+                            <td class="">2</td>
+                            <td class="">LAISHRAM JAYANTAKUMAR SINGH</td>
+                            <td class="">5</td>
+                            <td class="">45</td>
+                            <td class="">Male</td>
+                            <td class="">21/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row3">
+                            <td class="">3</td>
+                            <td class="">T SURJIT SINGH</td>
+                            <td class="">13</td>
+                            <td class="">47</td>
+                            <td class="">Male</td>
+                            <td class="">21/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row4">
+                            <td class="">4</td>
+                            <td class="">KH SHARMILA DEVI</td>
+                            <td class="">3</td>
+                            <td class="">33</td>
+                            <td class="">Female</td>
+                            <td class="">22/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row5">
+                            <td class="">5</td>
+                            <td class="">KWAIRAKPAM DEEPAK SINGH</td>
+                            <td class="">5</td>
+                            <td class="">34</td>
+                            <td class="">Male</td>
+                            <td class="">25/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row6">
+                            <td class="">6</td>
+                            <td class="">KH SANGITA DEVI</td>
+                            <td class="">5</td>
+                            <td class="">28</td>
+                            <td class="">Female</td>
+                            <td class="">25/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row7">
+                            <td class="">7</td>
+                            <td class="">RAJKUMAR NARESH KUMAR</td>
+                            <td class="">11</td>
+                            <td class="">33</td>
+                            <td class="">Male</td>
+                            <td class="">26/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row8">
+                            <td class="">8</td>
+                            <td class="">RK MEMTHOI</td>
+                            <td class="">3</td>
+                            <td class="">60</td>
+                            <td class="">Female</td>
+                            <td class="">26/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row9">
+                            <td class="">9</td>
+                            <td class="">RK JACKISON</td>
+                            <td class="">3</td>
+                            <td class="">35</td>
+                            <td class="">Male</td>
+                            <td class="">26/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row10">
+                            <td class="">10</td>
+                            <td class="">NONGMAITHEM IBOMCHA SINGH</td>
+                            <td class="">2</td>
+                            <td class="">66</td>
+                            <td class="">Male</td>
+                            <td class="">28/Apr</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row11">
+                            <td class="">11</td>
+                            <td class="">S. PADESHWORI DEVI</td>
+                            <td class="">2</td>
+                            <td class="">46</td>
+                            <td class="">Female</td>
+                            <td class="">03/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row12">
+                            <td class="17 n">12</td>
+                            <td class="18 s">LAISHRAM NGANGBI DEVI</td>
+                            <td class="19 n">3</td>
+                            <td class="19 n">65</td>
+                            <td class="19 s">Female</td>
+                            <td class="20 n">03/May</td>
+                            <td class="21 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row13">
+                            <td class="17 n">13</td>
+                            <td class="18 s">KH BIRACHANDRA SINGH</td>
+                            <td class="19 n">2</td>
+                            <td class="19 n">64</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">04/May</td>
+                            <td class="21 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row14">
+                            <td class="">14</td>
+                            <td class="">KHUNDRAKPMA TOMBI DEVI</td>
+                            <td class="">3</td>
+                            <td class="">63</td>
+                            <td class="">Female</td>
+                            <td class="">04/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row15">
+                            <td class="">15</td>
+                            <td class="">LAISHRAM MANIKANTA SINGH</td>
+                            <td class="">13</td>
+                            <td class="">37</td>
+                            <td class="">Male</td>
+                            <td class="">05/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row16">
+                            <td class="">16</td>
+                            <td class="">LAISHRAM NEBEDITA DEVI</td>
+                            <td class="">13</td>
+                            <td class="">37</td>
+                            <td class="">Female</td>
+                            <td class="">05/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row17">
+                            <td class="">17</td>
+                            <td class="">KH JOHNSON SINGH</td>
+                            <td class="">9</td>
+                            <td class="">36</td>
+                            <td class="">Male</td>
+                            <td class="">06/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row18">
+                            <td class="">18</td>
+                            <td class="">KONTHOUJAM BIRENKUMAR SINGH</td>
+                            <td class="">5</td>
+                            <td class="">56</td>
+                            <td class="">Male</td>
+                            <td class="">06/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row19">
+                            <td class="">19</td>
+                            <td class="">RAJKUMARI BIDYAPATI DEVI</td>
+                            <td class="">5</td>
+                            <td class="">55</td>
+                            <td class="">Female</td>
+                            <td class="">06/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row20">
+                            <td class="">20</td>
+                            <td class="">KH DEBALA DEVI</td>
+                            <td class="">8</td>
+                            <td class="">49</td>
+                            <td class="">Female</td>
+                            <td class="">07/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row21">
+                            <td class="">21</td>
+                            <td class="">TH. SAROJKUMAR SINGH</td>
+                            <td class="">8</td>
+                            <td class="">58</td>
+                            <td class="">Male</td>
+                            <td class="">07/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row22">
+                            <td class="">22</td>
+                            <td class="">OINAM GOPESHWOR SINGH</td>
+                            <td class="">4</td>
+                            <td class="">35</td>
+                            <td class="">Male</td>
+                            <td class="">07/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row23">
+                            <td class="">23</td>
+                            <td class="">LAISHRAM IBEMNUNGSHI DEVI</td>
+                            <td class="">14</td>
+                            <td class="">75</td>
+                            <td class="">Female</td>
+                            <td class="">08/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row24">
+                            <td class="">24</td>
+                            <td class="">KHUNDRAKPAM IBOCHOUBA SINGH</td>
+                            <td class="">2</td>
+                            <td class="">41</td>
+                            <td class="">Male</td>
+                            <td class="">08/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row25">
+                            <td class="">25</td>
+                            <td class="">LAISHRAM SHAMA</td>
+                            <td class="">3</td>
+                            <td class="">42</td>
+                            <td class="">Male</td>
+                            <td class="">08/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row26">
+                            <td class="">26</td>
+                            <td class="">LAISHRAM JONIKA</td>
+                            <td class="">2</td>
+                            <td class="">29</td>
+                            <td class="">Female</td>
+                            <td class="">08/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row27">
+                            <td class="">27</td>
+                            <td class="18 s">LAISHRAM GOURABAPU SINGH</td>
+                            <td class="19 n">3</td>
+                            <td class="19 n">80</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">08/May</td>
+                            <td class="21 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row28">
+                            <td class="">28</td>
+                            <td class="">HAOBIJAM NGANAREI DEVI</td>
+                            <td class="">8</td>
+                            <td class="">60</td>
+                            <td class="">Female</td>
+                            <td class="">08/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row29">
+                            <td class="">29</td>
+                            <td class="">THOKCHOM DINAKUMAR </td>
+                            <td class="">11</td>
+                            <td class="">42</td>
+                            <td class="">Male</td>
+                            <td class="">10/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row30">
+                            <td class="">30</td>
+                            <td class="">THOKCHOM BIDYALAXMI DEVI</td>
+                            <td class="">11</td>
+                            <td class="">9</td>
+                            <td class="">Female</td>
+                            <td class="">10/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row31">
+                            <td class="">31</td>
+                            <td class="">P DIANA DEVI</td>
+                            <td class="">13</td>
+                            <td class="">13</td>
+                            <td class="">Male</td>
+                            <td class="">10/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row32">
+                            <td class="">32</td>
+                            <td class="18 s">LAISHRAM MANIRAM SINGH</td>
+                            <td class="19 n">13</td>
+                            <td class="19 n">58</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">10/May</td>
+                            <td class="21 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row33">
+                            <td class="">33</td>
+                            <td class="">SAGAPAM DHANAMANJURI DEVI</td>
+                            <td class="">3</td>
+                            <td class="">38</td>
+                            <td class="">Female</td>
+                            <td class="">11/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row34">
+                            <td class="">34</td>
+                            <td class="">KHUNDRAKPAM VEER</td>
+                            <td class="">3</td>
+                            <td class="">10</td>
+                            <td class="">Male</td>
+                            <td class="">11/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row35">
+                            <td class="">35</td>
+                            <td class="">NGANGOM VICTORIA DEVI</td>
+                            <td class="">3</td>
+                            <td class="">16</td>
+                            <td class="">Female</td>
+                            <td class="">11/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row36">
+                            <td class="">36</td>
+                            <td class="">KH. MANITOMBA SINGH</td>
+                            <td class="">3</td>
+                            <td class="">36</td>
+                            <td class="">Male</td>
+                            <td class="">11/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row37">
+                            <td class="">37</td>
+                            <td class="">N. DEVSRI</td>
+                            <td class="">7</td>
+                            <td class="">31</td>
+                            <td class="">Female</td>
+                            <td class="">11/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row38">
+                            <td class="">38</td>
+                            <td class="18 s">M BILASHINI DEVI</td>
+                            <td class="19 n">8</td>
+                            <td class="19 n">60</td>
+                            <td class="19 s">Female</td>
+                            <td class="20 n">11/May</td>
+                            <td class="21 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row39">
+                            <td class="">39</td>
+                            <td class="">KHAIDEM ROSHAN SINGH</td>
+                            <td class="">4</td>
+                            <td class="">30</td>
+                            <td class="">Male</td>
+                            <td class="">12/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row40">
+                            <td class="">40</td>
+                            <td class="">O PREMABATI DEVI</td>
+                            <td class="">4</td>
+                            <td class="">54</td>
+                            <td class="">Female</td>
+                            <td class="">13/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row41">
+                            <td class="">41</td>
+                            <td class="">KHUNDRAKPAM MANDANA</td>
+                            <td class="">3</td>
+                            <td class="">5</td>
+                            <td class="">Female</td>
+                            <td class="">13/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row42">
+                            <td class="">42</td>
+                            <td class="">RK SARATKUMAR </td>
+                            <td class="">9</td>
+                            <td class="">57</td>
+                            <td class="">Male</td>
+                            <td class="">13/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row43">
+                            <td class="">43</td>
+                            <td class="">OINAM IBUCHOU SINGH</td>
+                            <td class="">4</td>
+                            <td class="">59</td>
+                            <td class="">Male</td>
+                            <td class="">13/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row44">
+                            <td class="">44</td>
+                            <td class="">OINAM CHOURJIT SINGH</td>
+                            <td class="">4</td>
+                            <td class="">30</td>
+                            <td class="">Male</td>
+                            <td class="">13/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row45">
+                            <td class="">45</td>
+                            <td class="">LAISHRAM GOURASHYAM SINGH</td>
+                            <td class="">3</td>
+                            <td class="">32</td>
+                            <td class="">Male</td>
+                            <td class="">14/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row46">
+                            <td class="">46</td>
+                            <td class="">TAKELLAMBAN BIDYACHANDRA SINGH (BIGYAN)</td>
+                            <td class="">5</td>
+                            <td class="">32</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row47">
+                            <td class="">47</td>
+                            <td class="">THOKCHOM SANDEEEP</td>
+                            <td class="">8</td>
+                            <td class="">18</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row48">
+                            <td class="">48</td>
+                            <td class="">THOKCHOM SATISHKUMAR </td>
+                            <td class="">8</td>
+                            <td class="">14</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row49">
+                            <td class="">49</td>
+                            <td class="">OINAM REZIYA</td>
+                            <td class="">4</td>
+                            <td class="">24</td>
+                            <td class="">Female</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row50">
+                            <td class="">50</td>
+                            <td class="">OINAM JULIA </td>
+                            <td class="">4</td>
+                            <td class="">23</td>
+                            <td class="">Female</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row51">
+                            <td class="">51</td>
+                            <td class="">OINAM ANJALI </td>
+                            <td class="">4</td>
+                            <td class="">24</td>
+                            <td class="">Female</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row52">
+                            <td class="">52</td>
+                            <td class="">OINAM BASANTA</td>
+                            <td class="">4</td>
+                            <td class="">54</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row53">
+                            <td class="">53</td>
+                            <td class="">OINAM NIRANJIT </td>
+                            <td class="">4</td>
+                            <td class="">12</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row54">
+                            <td class="">54</td>
+                            <td class="">OINAM SUMATI</td>
+                            <td class="">4</td>
+                            <td class="">35</td>
+                            <td class="">Female</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row55">
+                            <td class="">55</td>
+                            <td class="">OINAM TOMBA</td>
+                            <td class="">4</td>
+                            <td class="">81</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row56">
+                            <td class="">56</td>
+                            <td class="">PHUKHRAMBAM HELENA</td>
+                            <td class="">13</td>
+                            <td class="">9</td>
+                            <td class="">Female</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row57">
+                            <td class="">57</td>
+                            <td class="">SAGAPAM MONALISHA</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">25</td>
+                            <td class="">Female</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row58">
+                            <td class="">58</td>
+                            <td class="">SAGAPAM PREETY</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">23</td>
+                            <td class="">Female</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row59">
+                            <td class="">59</td>
+                            <td class="">SAGAPAM PRITAMJIT</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">23</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row60">
+                            <td class="">60</td>
+                            <td class="">SAGAPAM BASKAR</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">15</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row61">
+                            <td class="">61</td>
+                            <td class="">OINAM DINGKU</td>
+                            <td class="">4</td>
+                            <td class="">25</td>
+                            <td class="">Male</td>
+                            <td class="">15/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row62">
+                            <td class="">62</td>
+                            <td class="">M. MEMA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">63</td>
+                            <td class="">Female</td>
+                            <td class="">16/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row63">
+                            <td class="">63</td>
+                            <td class="18 s">TH (O) CHANDRABATI DEVI</td>
+                            <td class="19 n">8</td>
+                            <td class="19 n">86</td>
+                            <td class="19 s">Female</td>
+                            <td class="20 n">16/May</td>
+                            <td class="21 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row64">
+                            <td class="">64</td>
+                            <td class="">HAOBIJAM SAMASAKHI DEVI</td>
+                            <td class="">10</td>
+                            <td class="">62</td>
+                            <td class="">Female</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row65">
+                            <td class="">65</td>
+                            <td class="">OINAM IBOCHOUBA SINGH</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">59</td>
+                            <td class="">Male</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row66">
+                            <td class="">66</td>
+                            <td class="">OINAM SHYTABATI</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">56</td>
+                            <td class="">Female</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row67">
+                            <td class="">67</td>
+                            <td class="">OINAM YOHENBA </td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">15</td>
+                            <td class="">Male</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row68">
+                            <td class="">68</td>
+                            <td class="">TONGBRAM VIKRAM </td>
+                            <td class="">4</td>
+                            <td class="">42</td>
+                            <td class="">Male</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row69">
+                            <td class="">69</td>
+                            <td class="">S PREMJIT</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">41</td>
+                            <td class="">Male</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row70">
+                            <td class="">70</td>
+                            <td class="">S BINITA</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">37</td>
+                            <td class="">Female</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row71">
+                            <td class="">71</td>
+                            <td class="">L RAMESH</td>
+                            <td class="">2</td>
+                            <td class="">50</td>
+                            <td class="">Male</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row72">
+                            <td class="">72</td>
+                            <td class="">KSH. BROJEN SINGH</td>
+                            <td class="">2</td>
+                            <td class="">43</td>
+                            <td class="">Male</td>
+                            <td class="">17/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row73">
+                            <td class="">73</td>
+                            <td class="">TH. ROHJIT SINGH</td>
+                            <td class="">4</td>
+                            <td class="">16</td>
+                            <td class="">Male</td>
+                            <td class="">18/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row74">
+                            <td class="">74</td>
+                            <td class="">TH. SUSHINI KUMAR SINGH</td>
+                            <td class="">4</td>
+                            <td class="">47</td>
+                            <td class="">Male</td>
+                            <td class="">18/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row75">
+                            <td class="">75</td>
+                            <td class="">TH. INDIRA DEVI</td>
+                            <td class="">4</td>
+                            <td class="">43</td>
+                            <td class="">Female</td>
+                            <td class="">18/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row76">
+                            <td class="">76</td>
+                            <td class="18 s">KHWAIRAKPAM IBOHAL </td>
+                            <td class="19 n">14</td>
+                            <td class="19 n">90</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">19/May</td>
+                            <td class="22 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row77">
+                            <td class="">77</td>
+                            <td class="">RAJKUMAR SATYAJIT SINGH</td>
+                            <td class="">9</td>
+                            <td class="">14</td>
+                            <td class="">Male</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row78">
+                            <td class="">78</td>
+                            <td class="">OINAM JOYCHANDRA SINGH</td>
+                            <td class="">4</td>
+                            <td class="">33</td>
+                            <td class="">Male</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row79">
+                            <td class="">79</td>
+                            <td class="">SERAM PREMABATI</td>
+                            <td class="">4</td>
+                            <td class="">34</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row80">
+                            <td class="">80</td>
+                            <td class="">OINAM BIREN</td>
+                            <td class="">4</td>
+                            <td class="">50</td>
+                            <td class="">Male</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row81">
+                            <td class="">81</td>
+                            <td class="">OINAM MANILEIMA</td>
+                            <td class="">4</td>
+                            <td class="">45</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row82">
+                            <td class="">82</td>
+                            <td class="">OINAM RAJSHREE</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">14</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row83">
+                            <td class="">83</td>
+                            <td class="">OINAM ANJILAIKA</td>
+                            <td class="">4</td>
+                            <td class="">16</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row84">
+                            <td class="">84</td>
+                            <td class="">SAGAPAM MANIBABU</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">75</td>
+                            <td class="">Male</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row85">
+                            <td class="">85</td>
+                            <td class="">SAGAPAM PRATIMA DEVI</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">50</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row86">
+                            <td class="">86</td>
+                            <td class="">SAGAPAM AMARJIT</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">20</td>
+                            <td class="">Male</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row87">
+                            <td class="">87</td>
+                            <td class="">SAGAPAM NETAJIT</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">49</td>
+                            <td class="">Male</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row88">
+                            <td class="">88</td>
+                            <td class="">SAGAPAM BIROJA</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">48</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row89">
+                            <td class="">89</td>
+                            <td class="">SAGAPAM NEERJA</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">14</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row90">
+                            <td class="">90</td>
+                            <td class="">SAGAPAM DOLLY</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">7</td>
+                            <td class="">Female</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row91">
+                            <td class="">91</td>
+                            <td class="">LAISHRAM SHATRAJIT</td>
+                            <td class="">3</td>
+                            <td class="">40</td>
+                            <td class="">Male</td>
+                            <td class="">19/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row92r">
+                            <td class="">92</td>
+                            <td class="18 s">OINAM TAMU SINGH</td>
+                            <td class="19 s">Kha Khunou GP-3</td>
+                            <td class="19 n">80</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">20/May</td>
+                            <td class="23 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row93">
+                            <td class="">93</td>
+                            <td class="">HEMAM BASANTA SINGH</td>
+                            <td class="">2</td>
+                            <td class="">36</td>
+                            <td class="">Male</td>
+                            <td class="">20/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row94">
+                            <td class="">94</td>
+                            <td class="">HAOBIJAM BIRACHANDRA</td>
+                            <td class="">10</td>
+                            <td class="">65</td>
+                            <td class="">Male</td>
+                            <td class="">20/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row95">
+                            <td class="">95</td>
+                            <td class="">THINGOM MOMBI DEVI</td>
+                            <td class="">4</td>
+                            <td class="">56</td>
+                            <td class="">Female</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row96">
+                            <td class="">96</td>
+                            <td class="">THINGOM PRIYOSHAKHI DEVI</td>
+                            <td class="">4</td>
+                            <td class="">32</td>
+                            <td class="">Male</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row97">
+                            <td class="">97</td>
+                            <td class="">THINGOM RAMANANDA</td>
+                            <td class="">4</td>
+                            <td class="">38</td>
+                            <td class="">Male</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row98">
+                            <td class="">98</td>
+                            <td class="">THINGOM SUMILA</td>
+                            <td class="">4</td>
+                            <td class="">38</td>
+                            <td class="">Female</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row99">
+                            <td class="">99</td>
+                            <td class="">THINGOM SUNANDA</td>
+                            <td class="">4</td>
+                            <td class="">12</td>
+                            <td class="">Female</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row100">
+                            <td class="">100</td>
+                            <td class="">THINGOM GHANARI</td>
+                            <td class="">4</td>
+                            <td class="">10</td>
+                            <td class="">Female</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row101">
+                            <td class="">101</td>
+                            <td class="">CHRISTANO</td>
+                            <td class="">2</td>
+                            <td class="">14</td>
+                            <td class="">Male</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row102">
+                            <td class="">102</td>
+                            <td class="">P. NIRMALA DEVI</td>
+                            <td class="">13</td>
+                            <td class="">36</td>
+                            <td class="">Female</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row103">
+                            <td class="">103</td>
+                            <td class="">LAISHRAM THAMBANGOU</td>
+                            <td class="">3</td>
+                            <td class="">84</td>
+                            <td class="">Male</td>
+                            <td class="">21/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row104">
+                            <td class="">104</td>
+                            <td class="">PUKHRAMBAM SANGEETA DEVI</td>
+                            <td class="">4</td>
+                            <td class="">38</td>
+                            <td class="">Female</td>
+                            <td class="">22/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row105">
+                            <td class="">105</td>
+                            <td class="">KSH. SIDANTH SINGH</td>
+                            <td class="">4</td>
+                            <td class="">26</td>
+                            <td class="">Male</td>
+                            <td class="">22/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row106">
+                            <td class="">106</td>
+                            <td class="18 s">KHUMANTHEM BIMOLA </td>
+                            <td class="19 s">Kha Khunou GP-4</td>
+                            <td class="19 n">40</td>
+                            <td class="19 s">Female</td>
+                            <td class="20 n">23/May</td>
+                            <td class="23 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row107">
+                            <td class="">107</td>
+                            <td class="">KHUMANTHEM MIKHU DEVI</td>
+                            <td class="">Kha Khunou GP-4</td>
+                            <td class="">60</td>
+                            <td class="">Female</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row108">
+                            <td class="">108</td>
+                            <td class="">KHUMANTHEM EBEN DEVI</td>
+                            <td class="">Kha Khunou GP-4</td>
+                            <td class="">58</td>
+                            <td class="">Female</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row109">
+                            <td class="">109</td>
+                            <td class="">TONGBRAM ROBITA DEVI</td>
+                            <td class="">4</td>
+                            <td class="">24</td>
+                            <td class="">Female</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row110">
+                            <td class="">110</td>
+                            <td class="">TONGBRAM SANDHYARANI DEVI</td>
+                            <td class="">4</td>
+                            <td class="">45</td>
+                            <td class="">Female</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row111">
+                            <td class="">111</td>
+                            <td class="">TONGBRAM ROSHINI DEVI</td>
+                            <td class="">4</td>
+                            <td class="">13</td>
+                            <td class="">Female</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row112">
+                            <td class="">112</td>
+                            <td class="">TONGBRAM SANANINGTHEM</td>
+                            <td class="">4</td>
+                            <td class="">37</td>
+                            <td class="">Male</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row113">
+                            <td class="">113</td>
+                            <td class="">TONGBRAM PRIYA DEVI</td>
+                            <td class="">4</td>
+                            <td class="">39</td>
+                            <td class="">Female</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row114">
+                            <td class="">114</td>
+                            <td class="">TONGBRAM ASHINIKUMAR</td>
+                            <td class="">4</td>
+                            <td class="">8</td>
+                            <td class="">Male</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row115">
+                            <td class="">115</td>
+                            <td class="">LAISHRAM SOROJINI DEVI</td>
+                            <td class="">3</td>
+                            <td class="">33</td>
+                            <td class="">Female</td>
+                            <td class="">23/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row116">
+                            <td class="">116</td>
+                            <td class="">KWAIRAKPAM PREMO SINGH</td>
+                            <td class="">10</td>
+                            <td class="">40</td>
+                            <td class="">Male</td>
+                            <td class="">24/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row117">
+                            <td class="">117</td>
+                            <td class="">THINGOM RATANESHWOR</td>
+                            <td class="">4</td>
+                            <td class="">28</td>
+                            <td class="">Male</td>
+                            <td class="">24/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row118">
+                            <td class="">118</td>
+                            <td class="">HAOBIJAM ROMENCHANDRA</td>
+                            <td class="">10</td>
+                            <td class="">33</td>
+                            <td class="">Male</td>
+                            <td class="">25/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row119">
+                            <td class="">119</td>
+                            <td class="">RK PRATIMA DEVI</td>
+                            <td class="">8</td>
+                            <td class="">29</td>
+                            <td class="">Male</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row120">
+                            <td class="">120</td>
+                            <td class="">ASEM DHANABIR SINGH</td>
+                            <td class="">6</td>
+                            <td class="">47</td>
+                            <td class="">Male</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row121">
+                            <td class="">121</td>
+                            <td class="">UTHAM MEMTOMBI DEVI</td>
+                            <td class="">9</td>
+                            <td class="">55</td>
+                            <td class="">Female</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row122">
+                            <td class="">122</td>
+                            <td class="">KHUNDRAKPAM MEMCHA DEVI</td>
+                            <td class="">9</td>
+                            <td class="">55</td>
+                            <td class="">Female</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row123">
+                            <td class="">123</td>
+                            <td class="">LAISHRAM PHAJA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">57</td>
+                            <td class="">Female</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row124">
+                            <td class="">124</td>
+                            <td class="">OINAM SANGITA DEVI</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">35</td>
+                            <td class="">Female</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row125">
+                            <td class="">125</td>
+                            <td class="">OINAM LINGJEL</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">2</td>
+                            <td class="">Male</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row126">
+                            <td class="">126</td>
+                            <td class="">OINAM CHINGKHEI SINGH</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">11</td>
+                            <td class="">Male</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row127">
+                            <td class="">127</td>
+                            <td class="">OINAM IBOBI SINGH</td>
+                            <td class="">4</td>
+                            <td class="">74</td>
+                            <td class="">Male</td>
+                            <td class="">26/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row128">
+                            <td class="">128</td>
+                            <td class="">LAISHRAM NOREN SINGH</td>
+                            <td class="">12</td>
+                            <td class="">52</td>
+                            <td class="">Male</td>
+                            <td class="">27/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row129">
+                            <td class="">129</td>
+                            <td class="18 s">MOIRANGTHEM JATIKUMAR SINGH</td>
+                            <td class="19 n">8</td>
+                            <td class="19 n">62</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">28/May</td>
+                            <td class="23 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row130">
+                            <td class="">130</td>
+                            <td class="">MOIRANGTHEM BIRAJ</td>
+                            <td class="">8</td>
+                            <td class="">33</td>
+                            <td class="">Male</td>
+                            <td class="">28/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row131">
+                            <td class="">131</td>
+                            <td class="">LAISHRAM GAMBHIR </td>
+                            <td class="">4</td>
+                            <td class="">43</td>
+                            <td class="">Female</td>
+                            <td class="">28/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row132">
+                            <td class="">132</td>
+                            <td class="">KHUNDRAKPAM PRIYANJAN </td>
+                            <td class="">9</td>
+                            <td class="">18</td>
+                            <td class="">Male</td>
+                            <td class="">28/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row133">
+                            <td class="">133</td>
+                            <td class="">LAISHRAM SHARAT</td>
+                            <td class="">3</td>
+                            <td class="">64</td>
+                            <td class="">Male</td>
+                            <td class="">29/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row134">
+                            <td class="">134</td>
+                            <td class="">KHUMANTHEM ELLY</td>
+                            <td class="">Kha Khunou GP-4</td>
+                            <td class="">15</td>
+                            <td class="">Female</td>
+                            <td class="">29/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row135">
+                            <td class="">135</td>
+                            <td class="">RK BABYCHA DEVI</td>
+                            <td class="">8</td>
+                            <td class="">28</td>
+                            <td class="">Female</td>
+                            <td class="">29/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row136">
+                            <td class="">136</td>
+                            <td class="">ANGOM (O) MANITON DEVI</td>
+                            <td class="">12</td>
+                            <td class="">60</td>
+                            <td class="">Female</td>
+                            <td class="">29/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row137">
+                            <td class="">137</td>
+                            <td class="">THOKCHOM BINITKUMAR</td>
+                            <td class="">6</td>
+                            <td class="">17</td>
+                            <td class="">Male</td>
+                            <td class="">30/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row138">
+                            <td class="">138</td>
+                            <td class="">LAISHRAM JAYANTAKUMAR </td>
+                            <td class="">12</td>
+                            <td class="">60</td>
+                            <td class="">Male</td>
+                            <td class="">30/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row139">
+                            <td class="">139</td>
+                            <td class="">PUKHRAMBAM KALIDASH</td>
+                            <td class="">13</td>
+                            <td class="">44</td>
+                            <td class="">Male</td>
+                            <td class="">31/May</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row140">
+                            <td class="">140</td>
+                            <td class="">OINAM PHAJABI DEVI</td>
+                            <td class="">5</td>
+                            <td class="">56</td>
+                            <td class="">Female</td>
+                            <td class="">01/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row141">
+                            <td class="">141</td>
+                            <td class="">NINGTHOUJAM RANJITA DEVI</td>
+                            <td class="">4</td>
+                            <td class="">33</td>
+                            <td class="">Female</td>
+                            <td class="">02/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row142">
+                            <td class="">142</td>
+                            <td class="">MOIRANGTHEM ROHAN SINGH</td>
+                            <td class="">8</td>
+                            <td class="">26</td>
+                            <td class="">Male</td>
+                            <td class="">03/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row143">
+                            <td class="">143</td>
+                            <td class="">MOIRANGTHEM THOINU DEVI</td>
+                            <td class="">8</td>
+                            <td class="">48</td>
+                            <td class="">Female</td>
+                            <td class="">03/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row144">
+                            <td class="">144</td>
+                            <td class="">KHUNDRAKPAM KHAMBA SINGH</td>
+                            <td class="">7</td>
+                            <td class="">65</td>
+                            <td class="">Male</td>
+                            <td class="">05/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row145">
+                            <td class="">145</td>
+                            <td class="">KHUNDRAKPAM NINGTHEM SINGH</td>
+                            <td class="">7</td>
+                            <td class="">2</td>
+                            <td class="">Male</td>
+                            <td class="">05/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row146">
+                            <td class="">146</td>
+                            <td class="">KONJENGBAM JIBANMALA</td>
+                            <td class="">7</td>
+                            <td class="">43</td>
+                            <td class="">Female</td>
+                            <td class="">05/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row147">
+                            <td class="">147</td>
+                            <td class="">LAISHRAM SUSHITA DEVI</td>
+                            <td class="">12</td>
+                            <td class="">34</td>
+                            <td class="">Female</td>
+                            <td class="">05/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row148">
+                            <td class="">148</td>
+                            <td class="">LAISHRAM STARSON SINGH</td>
+                            <td class="">12</td>
+                            <td class="">3</td>
+                            <td class="">Male</td>
+                            <td class="">05/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row149">
+                            <td class="">149</td>
+                            <td class="">LAISHRAM BRINDABAN</td>
+                            <td class="">13</td>
+                            <td class="">65</td>
+                            <td class="">Male</td>
+                            <td class="">05/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row150">
+                            <td class="">150</td>
+                            <td class="">OINAM TOMBIMACHA</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">73</td>
+                            <td class="">Female</td>
+                            <td class="">05/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row151">
+                            <td class="">151</td>
+                            <td class="">KHWAIRAKPAM ANITA DEVI</td>
+                            <td class="">12</td>
+                            <td class="">45</td>
+                            <td class="">Female</td>
+                            <td class="">06/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row152">
+                            <td class="">152</td>
+                            <td class="">I LEIMA DEVI</td>
+                            <td class="">4</td>
+                            <td class="">62</td>
+                            <td class="">Female</td>
+                            <td class="">06/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row153">
+                            <td class="24 n">153</td>
+                            <td class="25 s">HIJAM LEIYON DEVI</td>
+                            <td class="26 n">6</td>
+                            <td class="26 n">52</td>
+                            <td class="26 s">Female</td>
+                            <td class="27 n">06/Jun</td>
+                            <td class="28 f"><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row154">
+                            <td class="">154</td>
+                            <td class="">ANGOM CHAOBI DEVI</td>
+                            <td class="">12</td>
+                            <td class="">90</td>
+                            <td class="">Female</td>
+                            <td class="">08/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row155">
+                            <td class="">155</td>
+                            <td class="">O. JINACHANDRA SINGH</td>
+                            <td class="">4</td>
+                            <td class="">41</td>
+                            <td class="">Male</td>
+                            <td class="">08/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row156">
+                            <td class="">156</td>
+                            <td class="">O. MUHINDRO</td>
+                            <td class="">4</td>
+                            <td class="">74</td>
+                            <td class="">Male</td>
+                            <td class="">08/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row157">
+                            <td class="">157</td>
+                            <td class="">O. NABACHANDRA</td>
+                            <td class="">4</td>
+                            <td class="">70</td>
+                            <td class="">Male</td>
+                            <td class="">08/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row158">
+                            <td class="">158</td>
+                            <td class="">LAISHRAM SURAJ SINGH</td>
+                            <td class="">13</td>
+                            <td class="">18</td>
+                            <td class="">Male</td>
+                            <td class="">08/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row159">
+                            <td class="">159</td>
+                            <td class="">LAISHRAM ALEX SINGH</td>
+                            <td class="">13</td>
+                            <td class="">15</td>
+                            <td class="">Male</td>
+                            <td class="">08/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row160">
+                            <td class="">160</td>
+                            <td class="">IRENGBAM NUPIMACHA</td>
+                            <td class="">4</td>
+                            <td class="">55</td>
+                            <td class="">Female</td>
+                            <td class="">08/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row161">
+                            <td class="">161</td>
+                            <td class="">O MEMCHOUBI DEVI</td>
+                            <td class="">4</td>
+                            <td class="">69</td>
+                            <td class="">Female</td>
+                            <td class="">09/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row162">
+                            <td class="">162</td>
+                            <td class="">O THOISANA</td>
+                            <td class="">4</td>
+                            <td class="">12</td>
+                            <td class="">Male</td>
+                            <td class="">09/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row163">
+                            <td class="">163</td>
+                            <td class="">O BIJAYARANI DEVI</td>
+                            <td class="">4</td>
+                            <td class="">29</td>
+                            <td class="">Female</td>
+                            <td class="">09/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row164">
+                            <td class="">164</td>
+                            <td class="">O RINACHANDRA SINGH</td>
+                            <td class="">4</td>
+                            <td class="">43</td>
+                            <td class="">Male</td>
+                            <td class="">09/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row165">
+                            <td class="">165</td>
+                            <td class="">KH MUHI</td>
+                            <td class="">9</td>
+                            <td class="">34</td>
+                            <td class="">Male</td>
+                            <td class="">10/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row166">
+                            <td class="">166</td>
+                            <td class="">THINGOM MUKHRASANA </td>
+                            <td class="">4</td>
+                            <td class="">69</td>
+                            <td class="">Female</td>
+                            <td class="">10/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row167">
+                            <td class="">167</td>
+                            <td class="">OINAM OPENDRO</td>
+                            <td class="">4</td>
+                            <td class="">47</td>
+                            <td class="">Male</td>
+                            <td class="">11/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row168">
+                            <td class="">168</td>
+                            <td class="">PUKHRAMBAM RISHIKANTA SINGH</td>
+                            <td class="">12</td>
+                            <td class="">48</td>
+                            <td class="">Male</td>
+                            <td class="">13/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row169">
+                            <td class="">169</td>
+                            <td class="">PUKHRAMBAM NIRMALA DEVI</td>
+                            <td class="">12</td>
+                            <td class="">47</td>
+                            <td class="">Female</td>
+                            <td class="">13/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row170">
+                            <td class="">170</td>
+                            <td class="">PUKHRAMBAM ROBOT</td>
+                            <td class="">12</td>
+                            <td class="">21</td>
+                            <td class="">Male</td>
+                            <td class="">13/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row171">
+                            <td class="">171</td>
+                            <td class="">MOIRANGTHEM RABI SINGH</td>
+                            <td class="">9</td>
+                            <td class="">36</td>
+                            <td class="">Male</td>
+                            <td class="">13/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row172">
+                            <td class="">172</td>
+                            <td class="">PUKHRAMBAM DEENDAYAL SINGH</td>
+                            <td class="">12</td>
+                            <td class="">27</td>
+                            <td class="">Male</td>
+                            <td class="">14/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row173">
+                            <td class="">173</td>
+                            <td class="">KH. KISHORE SINGH</td>
+                            <td class="">10</td>
+                            <td class="">42</td>
+                            <td class="">Male</td>
+                            <td class="">16/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row174">
+                            <td class="">174</td>
+                            <td class="">KH PRATIMA DEVI</td>
+                            <td class="">10</td>
+                            <td class="">41</td>
+                            <td class="">Female</td>
+                            <td class="">16/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row175">
+                            <td class="">175</td>
+                            <td class="">KH. JUSICA</td>
+                            <td class="">10</td>
+                            <td class="">17</td>
+                            <td class="">Female</td>
+                            <td class="">16/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row176">
+                            <td class="">176</td>
+                            <td class="">KHWAIRAKPAM ALINA CHANU</td>
+                            <td class="">13</td>
+                            <td class="">26</td>
+                            <td class="">Female</td>
+                            <td class="">17/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row177">
+                            <td class="">177</td>
+                            <td class="">RK SURBALA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">30</td>
+                            <td class="">Female</td>
+                            <td class="">18/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row178">
+                            <td class="">178</td>
+                            <td class="">HAOBIJAM THOIBI </td>
+                            <td class="">10</td>
+                            <td class="">32</td>
+                            <td class="">Female</td>
+                            <td class="">20/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row179">
+                            <td class="">179</td>
+                            <td class="">HAOBIJAM JOYCHANDRA SINGH</td>
+                            <td class="">10</td>
+                            <td class="">34</td>
+                            <td class="">Male</td>
+                            <td class="">20/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row180">
+                            <td class="">180</td>
+                            <td class="">PUKHRAMBAM RADHAKANTA SINGH</td>
+                            <td class="">14</td>
+                            <td class="">52</td>
+                            <td class="">Male</td>
+                            <td class="">22/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row181">
+                            <td class="">181</td>
+                            <td class="">RAJKUMARI PAKPI DEVI</td>
+                            <td class="">14</td>
+                            <td class="">39</td>
+                            <td class="">Female</td>
+                            <td class="">22/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row182">
+                            <td class="">182</td>
+                            <td class="">PUKHRAMBAM GYANESHWOR SINGH</td>
+                            <td class="">12</td>
+                            <td class="">70</td>
+                            <td class="">Male</td>
+                            <td class="">22/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row183">
+                            <td class="">183</td>
+                            <td class="">PUKHRAMBAM YAIMABI DEVI</td>
+                            <td class="">12</td>
+                            <td class="">65</td>
+                            <td class="">Female</td>
+                            <td class="">22/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row184">
+                            <td class="">184</td>
+                            <td class="">RK SUBADHANI DEVI</td>
+                            <td class="">3</td>
+                            <td class="">71</td>
+                            <td class="">Female</td>
+                            <td class="">23/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row185">
+                            <td class="">185</td>
+                            <td class="">RK BISWANATH SINGH</td>
+                            <td class="">3</td>
+                            <td class="">75</td>
+                            <td class="">Male</td>
+                            <td class="">23/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row186">
+                            <td class="">186</td>
+                            <td class="">RK PREMNATH SINGH</td>
+                            <td class="">3</td>
+                            <td class="">46</td>
+                            <td class="">Male</td>
+                            <td class="">23/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row187">
+                            <td class="">187</td>
+                            <td class="">KH NURAJ SINGH</td>
+                            <td class="">14</td>
+                            <td class="">12</td>
+                            <td class="">Male</td>
+                            <td class="">23/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row188">
+                            <td class="">188</td>
+                            <td class="">KH KRITINA SINGH</td>
+                            <td class="">14</td>
+                            <td class="">8</td>
+                            <td class="">Female</td>
+                            <td class="">23/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row189">
+                            <td class="">189</td>
+                            <td class="">ANGOM BINDIA</td>
+                            <td class="">12</td>
+                            <td class="">25</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row190">
+                            <td class="">190</td>
+                            <td class="">Y BICKY SINGH</td>
+                            <td class="">2</td>
+                            <td class="">29</td>
+                            <td class="">Male</td>
+                            <td class="">24/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row191">
+                            <td class="">191</td>
+                            <td class="">DELPHINE KSHETRIMAYUM</td>
+                            <td class="">2</td>
+                            <td class="">26</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row192">
+                            <td class="">192</td>
+                            <td class="">HEISNAM ROMIO</td>
+                            <td class="">10</td>
+                            <td class="">33</td>
+                            <td class="">Male</td>
+                            <td class="">25/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row193">
+                            <td class="">193</td>
+                            <td class="">NINGTHOUJAM LUWANGAMBA</td>
+                            <td class="">13</td>
+                            <td class="">10</td>
+                            <td class="">Male</td>
+                            <td class="">25/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row194">
+                            <td class="">194</td>
+                            <td class="">NINGTHOUJAM SUNIL SINGH</td>
+                            <td class="">13</td>
+                            <td class="">46</td>
+                            <td class="">Male</td>
+                            <td class="">25/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row195">
+                            <td class="">195</td>
+                            <td class="">PUKHRAMBAM MANJA SINGH</td>
+                            <td class="">13</td>
+                            <td class="">32</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row196">
+                            <td class="">196</td>
+                            <td class="">KWAIRAKPAM DEVADAS</td>
+                            <td class="">14</td>
+                            <td class="">63</td>
+                            <td class="">Male</td>
+                            <td class="">27/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row197">
+                            <td class="">197</td>
+                            <td class="">KWAIRAKPAM JEMITA DEVI</td>
+                            <td class="">14</td>
+                            <td class="">31</td>
+                            <td class="">Female</td>
+                            <td class="">27/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row198">
+                            <td class="">198</td>
+                            <td class="">KWAIRAKPAM LINGTHOINGANBI</td>
+                            <td class="">14</td>
+                            <td class="">2</td>
+                            <td class="">Female</td>
+                            <td class="">27/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row199">
+                            <td class="">199</td>
+                            <td class="">KWAIRAKPAM BOBO</td>
+                            <td class="">14</td>
+                            <td class="">31</td>
+                            <td class="">Male</td>
+                            <td class="">27/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row200">
+                            <td class="">200</td>
+                            <td class="">KWIRAKPAM NILAMANI</td>
+                            <td class="">14</td>
+                            <td class="">35</td>
+                            <td class="">Male</td>
+                            <td class="">27/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row201">
+                            <td class="">201</td>
+                            <td class="">KH MUNAL </td>
+                            <td class="">3</td>
+                            <td class="">72</td>
+                            <td class="">Male</td>
+                            <td class="">27/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row202">
+                            <td class="">202</td>
+                            <td class="">LAISHRAM MUBI DEVI</td>
+                            <td class="">14</td>
+                            <td class="">61</td>
+                            <td class="">Female</td>
+                            <td class="">27/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row203">
+                            <td class="">203</td>
+                            <td class="">N. BINODKUMAR SINGH</td>
+                            <td class="">7</td>
+                            <td class="">60</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row204">
+                            <td class="">204</td>
+                            <td class="">N. SHASHITA DEVI</td>
+                            <td class="">7</td>
+                            <td class="">49</td>
+                            <td class="">Female</td>
+                            <td class="">29/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row205">
+                            <td class="">205</td>
+                            <td class="">KSHETRIMAYUM KANCHAN</td>
+                            <td class="">2</td>
+                            <td class="">22</td>
+                            <td class="">Female</td>
+                            <td class="">30/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row206">
+                            <td class="">206</td>
+                            <td class="">KSHETRIMAYUM ECHAN</td>
+                            <td class="">2</td>
+                            <td class="">25</td>
+                            <td class="">Female</td>
+                            <td class="">30/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row207">
+                            <td class="">207</td>
+                            <td class="">KSHETRIMAYUM MALEMNGANBI</td>
+                            <td class="">2</td>
+                            <td class="">5</td>
+                            <td class="">Female</td>
+                            <td class="">30/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row208">
+                            <td class="">208</td>
+                            <td class="">KSHETRIMAYUM KISHAN</td>
+                            <td class="">2</td>
+                            <td class="">26</td>
+                            <td class="">Male</td>
+                            <td class="">30/Jun</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row209">
+                            <td class="">209</td>
+                            <td class="">ANGOM SOROJINI </td>
+                            <td class="">1</td>
+                            <td class="">50</td>
+                            <td class="">Female</td>
+                            <td class="">01/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row210">
+                            <td class="">210</td>
+                            <td class="">OINAM BRIAN SINGH</td>
+                            <td class="">14</td>
+                            <td class="">15</td>
+                            <td class="">Male</td>
+                            <td class="">02/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row211">
+                            <td class="">211</td>
+                            <td class="">LAISHRAM GOVINDAS SINGH</td>
+                            <td class="">14</td>
+                            <td class="">48</td>
+                            <td class="">Male</td>
+                            <td class="">02/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row212">
+                            <td class="">212</td>
+                            <td class="">LAISHRAM PRIYALUXMI DEVI</td>
+                            <td class="">14</td>
+                            <td class="">12</td>
+                            <td class="">Female</td>
+                            <td class="">02/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row213">
+                            <td class="">213</td>
+                            <td class="">LAISHRAM ABETHOI DEVI</td>
+                            <td class="">14</td>
+                            <td class="">30</td>
+                            <td class="">Female</td>
+                            <td class="">02/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row214">
+                            <td class="">214</td>
+                            <td class="">AVINA LAISHRAM DEVI</td>
+                            <td class="">14</td>
+                            <td class="">5</td>
+                            <td class="">Female</td>
+                            <td class="">02/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row215">
+                            <td class="">215</td>
+                            <td class="">YENGKHOM MALEI</td>
+                            <td class="">2</td>
+                            <td class="">45</td>
+                            <td class="">Male</td>
+                            <td class="">02/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row216">
+                            <td class="">216</td>
+                            <td class="">P ROBINSON </td>
+                            <td class="">10</td>
+                            <td class="">25</td>
+                            <td class="">Male</td>
+                            <td class="">03/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row217">
+                            <td class="">217</td>
+                            <td class="">RIYA CHANU</td>
+                            <td class="">2</td>
+                            <td class="">21</td>
+                            <td class="">Female</td>
+                            <td class="">03/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row218">
+                            <td class="">218</td>
+                            <td class="">KWAIRAKPAM KHUTAMACHA SINGH</td>
+                            <td class="">3</td>
+                            <td class="">72</td>
+                            <td class="">Male</td>
+                            <td class="">04/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row219">
+                            <td class="">219</td>
+                            <td class="">R.K. RABISANA</td>
+                            <td class="">11</td>
+                            <td class="">30</td>
+                            <td class="">Male</td>
+                            <td class="">04/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row220">
+                            <td class="">220</td>
+                            <td class="">NONGTHOMBAM IBEMSANA</td>
+                            <td class="">10</td>
+                            <td class="">47</td>
+                            <td class="">Female</td>
+                            <td class="">05/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row221">
+                            <td class="">221</td>
+                            <td class="">NONGMAITHEM RAJESH</td>
+                            <td class="">2</td>
+                            <td class="">37</td>
+                            <td class="">Female</td>
+                            <td class="">05/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row222">
+                            <td class="">222</td>
+                            <td class="">MOIRANGTHEM SUPRIYA DEVI</td>
+                            <td class="">10</td>
+                            <td class="">29</td>
+                            <td class="">Female</td>
+                            <td class="">06/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row223">
+                            <td class="">223</td>
+                            <td class="">PUKHRAMBAM GANGARANI DEVI</td>
+                            <td class="">10</td>
+                            <td class="">44</td>
+                            <td class="">Female</td>
+                            <td class="">07/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row224">
+                            <td class="">224</td>
+                            <td class="">M KUSMABAA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">36</td>
+                            <td class="">Female</td>
+                            <td class="">08/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row225">
+                            <td class="">225</td>
+                            <td class="">RK IBOSANA SINGH</td>
+                            <td class="">11</td>
+                            <td class="">72</td>
+                            <td class="">Male</td>
+                            <td class="">08/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row226">
+                            <td class="">226</td>
+                            <td class="">KANGABAM NAOCHA SINGH</td>
+                            <td class="">Kha Khunou GP-4</td>
+                            <td class="">26</td>
+                            <td class="">Male</td>
+                            <td class="">09/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row227">
+                            <td class="">227</td>
+                            <td class="">KONTHOUJAM ROSHAN </td>
+                            <td class="">12</td>
+                            <td class="">29</td>
+                            <td class="">Male</td>
+                            <td class="">09/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row228">
+                            <td class="">228</td>
+                            <td class="">NINGTHOUJAM RABINATH</td>
+                            <td class="">10</td>
+                            <td class="">29</td>
+                            <td class="">Male</td>
+                            <td class="">10/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row229">
+                            <td class="">229</td>
+                            <td class="">PUKHRAMBAM RANJIT SINGH</td>
+                            <td class="">13</td>
+                            <td class="">41</td>
+                            <td class="">Male</td>
+                            <td class="">10/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row230">
+                            <td class="17 n">230</td>
+                            <td class="18 s">YANGLEM BIMOLA DEVI</td>
+                            <td class="19 n">2</td>
+                            <td class="19 n">58</td>
+                            <td class="19 s">Female</td>
+                            <td class="20 n">11/Jul</td>
+                            <td class="23 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row231">
+                            <td class="">231</td>
+                            <td class="">RAJKUMARI GAMBHINI DEVI</td>
+                            <td class="">11</td>
+                            <td class="">64</td>
+                            <td class="">Female</td>
+                            <td class="">12/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row232">
+                            <td class="">232</td>
+                            <td class="">L RANJANA</td>
+                            <td class="">3</td>
+                            <td class="">44</td>
+                            <td class="">Female</td>
+                            <td class="">14/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row233">
+                            <td class="29 n">233</td>
+                            <td class="30 s">ROMILA DEVI CHINGANGBAM</td>
+                            <td class="31 n">3</td>
+                            <td class="31 n">33</td>
+                            <td class="31 s">Female</td>
+                            <td class="32 n">14/Jul</td>
+                            <td class="33 f"><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row234">
+                            <td class="">234</td>
+                            <td class="">SAINT HOBIJAM</td>
+                            <td class="">14</td>
+                            <td class="">29</td>
+                            <td class="">Male</td>
+                            <td class="">15/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row235">
+                            <td class="">235</td>
+                            <td class="">H. TOMBIMACHA</td>
+                            <td class="">14</td>
+                            <td class="">81</td>
+                            <td class="">Female</td>
+                            <td class="">15/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row236">
+                            <td class="">236</td>
+                            <td class="">ASEM BEMBEM</td>
+                            <td class="">6</td>
+                            <td class="">38</td>
+                            <td class="">Female</td>
+                            <td class="">16/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row237">
+                            <td class="">237</td>
+                            <td class="">ASEM NETAJI</td>
+                            <td class="">6</td>
+                            <td class="">37</td>
+                            <td class="">Male</td>
+                            <td class="">16/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row238">
+                            <td class="">238</td>
+                            <td class="">ASEM TENSINBA</td>
+                            <td class="">6</td>
+                            <td class="">5</td>
+                            <td class="">Male</td>
+                            <td class="">16/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row239">
+                            <td class="">239</td>
+                            <td class="">OINAM LEIKHAM</td>
+                            <td class="">10</td>
+                            <td class="">54</td>
+                            <td class="">Female</td>
+                            <td class="">16/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row240">
+                            <td class="">240</td>
+                            <td class="">OINAM  BIJESH</td>
+                            <td class="">10</td>
+                            <td class="">22</td>
+                            <td class="">Male</td>
+                            <td class="">16/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row241">
+                            <td class="">241</td>
+                            <td class="">LAISHRAM PREMCHAND SINGH</td>
+                            <td class="">3</td>
+                            <td class="">23</td>
+                            <td class="">Male</td>
+                            <td class="">16/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row242">
+                            <td class="17 n">242</td>
+                            <td class="18 s">N. BABUCHOUBA</td>
+                            <td class="19 n">4</td>
+                            <td class="19 n">75</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">16/Jul</td>
+                            <td class="23 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row243">
+                            <td class="">243</td>
+                            <td class="">KHANGJARAKPAM SONIA CHANU</td>
+                            <td class="">4</td>
+                            <td class="">17</td>
+                            <td class="">Female</td>
+                            <td class="">18/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row244">
+                            <td class="">244</td>
+                            <td class="">THANGJAM LEIRANG</td>
+                            <td class="">2</td>
+                            <td class="">44</td>
+                            <td class="">Female</td>
+                            <td class="">19/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row245">
+                            <td class="">245</td>
+                            <td class="">THANGJAM SANAHAL SINGH</td>
+                            <td class="">2</td>
+                            <td class="">42</td>
+                            <td class="">Male</td>
+                            <td class="">20/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row246">
+                            <td class="">246</td>
+                            <td class="">THANGJAM VANESSA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">14</td>
+                            <td class="">Female</td>
+                            <td class="">20/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row247">
+                            <td class="">247</td>
+                            <td class="">THANGJAM BIDESHINI DEVI</td>
+                            <td class="">2</td>
+                            <td class="">40</td>
+                            <td class="">Female</td>
+                            <td class="">20/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row248">
+                            <td class="">248</td>
+                            <td class="">THIYAM REZIA DEVI</td>
+                            <td class="">Kha Khunou GP-4</td>
+                            <td class="">35</td>
+                            <td class="">Female</td>
+                            <td class="">20/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row249">
+                            <td class="">249</td>
+                            <td class="18 s">KONTHOUJAM IBOYAIMA SINGH</td>
+                            <td class="">10</td>
+                            <td class="">69</td>
+                            <td class="">Male</td>
+                            <td class="">20/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row250">
+                            <td class="">250</td>
+                            <td class="">RK DOREN</td>
+                            <td class="">14</td>
+                            <td class="">55</td>
+                            <td class="">Male</td>
+                            <td class="">20/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row251">
+                            <td class="">251</td>
+                            <td class="18 s">RK RASHI</td>
+                            <td class="">14</td>
+                            <td class="">55</td>
+                            <td class="">Male</td>
+                            <td class="">20/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row252">
+                            <td class="">252</td>
+                            <td class="">KUMAN BOBYCHA SINGH</td>
+                            <td class="">4</td>
+                            <td class="">27</td>
+                            <td class="">Male</td>
+                            <td class="">21/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row253">
+                            <td class="">253</td>
+                            <td class="">KHUNDRAKPAM RADHARANI</td>
+                            <td class="">9</td>
+                            <td class="">66</td>
+                            <td class="">Female</td>
+                            <td class="">21/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row254">
+                            <td class="">254</td>
+                            <td class="">RAJKUMAR OJIT SINGH</td>
+                            <td class="">11</td>
+                            <td class="">43</td>
+                            <td class="">Male</td>
+                            <td class="">21/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row255">
+                            <td class="17 n">255</td>
+                            <td class="18 s">HAOBIJAM BABUDHON</td>
+                            <td class="19 n">13</td>
+                            <td class="19 n">78</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">22/Jul</td>
+                            <td class="23 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row256">
+                            <td class="">256</td>
+                            <td class="">THANGJAM RADHARANI DEVI</td>
+                            <td class="">13</td>
+                            <td class="">54</td>
+                            <td class="">Female</td>
+                            <td class="">22/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row257">
+                            <td class="">257</td>
+                            <td class="">YENGKHOM BIRAMANGOL SINGH</td>
+                            <td class="">2</td>
+                            <td class="">58</td>
+                            <td class="">Male</td>
+                            <td class="">22/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row258">
+                            <td class="">258</td>
+                            <td class="">YENGKHOM GANGA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">25</td>
+                            <td class="">Female</td>
+                            <td class="">22/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row259">
+                            <td class="">259</td>
+                            <td class="">YENGKHOM IBETOMBI DEVI</td>
+                            <td class="">2</td>
+                            <td class="">49</td>
+                            <td class="">Female</td>
+                            <td class="">22/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row260">
+                            <td class="17 n">260</td>
+                            <td class="18 s">MOIRANGTHEM THOIBI DEVI</td>
+                            <td class="19 n">2</td>
+                            <td class="19 n">71</td>
+                            <td class="19 s">Female</td>
+                            <td class="20 n">22/Jul</td>
+                            <td class="23 n"> <span class="badge bg-danger"> ( RIP ) </span> </td>
+                          </tr>
+                          <tr class="row261">
+                            <td class="">261</td>
+                            <td class="">TH IBEMHAL</td>
+                            <td class="">Kha Khunou GP-4</td>
+                            <td class="">62</td>
+                            <td class="">Female</td>
+                            <td class="">23/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row262">
+                            <td class="">262</td>
+                            <td class="">I. NUNGTSHITHOI</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">37</td>
+                            <td class="">Female</td>
+                            <td class="">23/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row263">
+                            <td class="">263</td>
+                            <td class="">I. RAJESH</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">38</td>
+                            <td class="">Male</td>
+                            <td class="">23/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row264">
+                            <td class="">264</td>
+                            <td class="">N MAIPAKPI </td>
+                            <td class="">2</td>
+                            <td class="">62</td>
+                            <td class="">Female</td>
+                            <td class="">23/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row265">
+                            <td class="">265</td>
+                            <td class="">LAISHRAM SANTOSH</td>
+                            <td class="">2</td>
+                            <td class="">31</td>
+                            <td class="">Male</td>
+                            <td class="">23/Jul</td>
+                            <td class=""><span class="badge bg-success">Isolation Completed</span></td>
+                          </tr>
+                          <tr class="row266">
+                            <td class="">266</td>
+                            <td class="">KHWAIRAKPAM YAIKHAMBA</td>
+                            <td class="">2</td>
+                            <td class="">28</td>
+                            <td class="">Male</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row267">
+                            <td class="">267</td>
+                            <td class="">OINAM DAYAL</td>
+                            <td class="">10</td>
+                            <td class="">30</td>
+                            <td class="">Male</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row268">
+                            <td class="">268</td>
+                            <td class="">OINAM PRIYA</td>
+                            <td class="">10</td>
+                            <td class="">28</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row269">
+                            <td class="">269</td>
+                            <td class="">THIYAM RIYA</td>
+                            <td class="">4</td>
+                            <td class="">7</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row270">
+                            <td class="">270</td>
+                            <td class="">NAMEIRAKPAM ARTINA</td>
+                            <td class="">4</td>
+                            <td class="">7</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row271">
+                            <td class="">271</td>
+                            <td class="">NAMEIRAKPAM ROHIT</td>
+                            <td class="">4</td>
+                            <td class="">15</td>
+                            <td class="">Male</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row272">
+                            <td class="">272</td>
+                            <td class="">NAMEIRAKPAM PREMANANDA</td>
+                            <td class="">4</td>
+                            <td class="">47</td>
+                            <td class="">Male</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row273">
+                            <td class="">273</td>
+                            <td class="">NAMEIRAKPAM RISHIKA</td>
+                            <td class="">4</td>
+                            <td class="">14</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row274">
+                            <td class="">274</td>
+                            <td class="">NAMEIRAKPAM NUNGSHITHOIBI</td>
+                            <td class="">4</td>
+                            <td class="">41</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row275">
+                            <td class="">275</td>
+                            <td class="">NAMEIRAKPAM LANTHOI</td>
+                            <td class="">4</td>
+                            <td class="">10</td>
+                            <td class="">Female</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row276">
+                            <td class="">276</td>
+                            <td class="">TH LOKHON</td>
+                            <td class="">4</td>
+                            <td class="">65</td>
+                            <td class="">Male</td>
+                            <td class="">24/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row277">
+                            <td class="">277</td>
+                            <td class="">RK SURJITKUMAR</td>
+                            <td class="">3</td>
+                            <td class="">70</td>
+                            <td class="">Male</td>
+                            <td class="">25/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row278">
+                            <td class="">278</td>
+                            <td class="">ANGOM KRISHNACHANDRA SINGH</td>
+                            <td class="">1</td>
+                            <td class="">65</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row279">
+                            <td class="">279</td>
+                            <td class="">ANGOM DUSTAMANI SINGH</td>
+                            <td class="">1</td>
+                            <td class="">25</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row280">
+                            <td class="">280</td>
+                            <td class="">RAJKUMARI PHAJATOMBI DEVI</td>
+                            <td class="">11</td>
+                            <td class="">39</td>
+                            <td class="">Female</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row281">
+                            <td class="">281</td>
+                            <td class="">RAJKUMAR DAYANANDA</td>
+                            <td class="">11</td>
+                            <td class="">15</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row282">
+                            <td class="">282</td>
+                            <td class="">KH NIMOLCHAND SINGH</td>
+                            <td class="">14</td>
+                            <td class="">41</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row283">
+                            <td class="">283</td>
+                            <td class="">NOAREM ANITA DEVI</td>
+                            <td class="">14</td>
+                            <td class="">39</td>
+                            <td class="">Female</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row284">
+                            <td class="">284</td>
+                            <td class="">KHWAIRAKPAM NABADWIP SINGH</td>
+                            <td class="">14</td>
+                            <td class="">70</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row285">
+                            <td class="">285</td>
+                            <td class="">KHWAIRAKPAM (O) MEMCHA DEVI</td>
+                            <td class="">14</td>
+                            <td class="">64</td>
+                            <td class="">Female</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row286">
+                            <td class="">286</td>
+                            <td class="">KHWAIRAKPAM ALEE</td>
+                            <td class="">14</td>
+                            <td class="">11</td>
+                            <td class="">Female</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row287">
+                            <td class="">287</td>
+                            <td class="">KHWAIRAKPAM NARESHKANTA SINGH</td>
+                            <td class="">14</td>
+                            <td class="">35</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row288">
+                            <td class="">288</td>
+                            <td class="">HAOBIJAM DIK SINGH</td>
+                            <td class="">14</td>
+                            <td class="">17</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row289">
+                            <td class="">289</td>
+                            <td class="">HAOBIJAM NELSON</td>
+                            <td class="">14</td>
+                            <td class="">7</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row290">
+                            <td class="">290</td>
+                            <td class="">HAOBIJAM KANTA SINGH</td>
+                            <td class="">14</td>
+                            <td class="">9</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row291">
+                            <td class="">291</td>
+                            <td class="">KWAIRAKPAM PREMILA DEVI</td>
+                            <td class="">14</td>
+                            <td class="">36</td>
+                            <td class="">Female</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row292">
+                            <td class="">292</td>
+                            <td class="">RAJKUMARI BABINA DEVI</td>
+                            <td class="">14</td>
+                            <td class="">14</td>
+                            <td class="">Female</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row293">
+                            <td class="">293</td>
+                            <td class="">SAMURAIRAKPAM NAOBUNG SINGH</td>
+                            <td class="">4</td>
+                            <td class="">19</td>
+                            <td class="">Male</td>
+                            <td class="">26/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row294">
+                            <td class="17 n">294</td>
+                            <td class="18 s">OINAM ANGOUBI SINGH</td>
+                            <td class="19 n">7</td>
+                            <td class="19 n">88</td>
+                            <td class="19 s">Male</td>
+                            <td class="20 n">26/Jul</td>
+                            <td class=""> <span class="badge bg-success">Isolation Completed</span> </td>
+                          </tr>
+                          <tr class="row295">
+                            <td class="">295</td>
+                            <td class="">O. JOYCHANDRA SINGH</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">50</td>
+                            <td class="">Male</td>
+                            <td class="">27/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row296">
+                            <td class="">296</td>
+                            <td class="">M. MOHENKUMAR</td>
+                            <td class="">9</td>
+                            <td class="">47</td>
+                            <td class="">Male</td>
+                            <td class="">27/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row297">
+                            <td class="">297</td>
+                            <td class="">M. MENAKA</td>
+                            <td class="">9</td>
+                            <td class="">25</td>
+                            <td class="">Female</td>
+                            <td class="">27/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row298">
+                            <td class="">298</td>
+                            <td class="">S. ROMITA DEVI</td>
+                            <td class="">8</td>
+                            <td class="">48</td>
+                            <td class="">Female</td>
+                            <td class="">28/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row299">
+                            <td class="">299</td>
+                            <td class="">KHUNDRAKPMA ROMILA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">47</td>
+                            <td class="">Female</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row300">
+                            <td class="">300</td>
+                            <td class="">KHUNDRAKPAM RIYA DEVI</td>
+                            <td class="">2</td>
+                            <td class="">17</td>
+                            <td class="">Female</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row301">
+                            <td class="">301</td>
+                            <td class="">RAJKUMAR KEINAHAL</td>
+                            <td class="">3</td>
+                            <td class="">98</td>
+                            <td class="">Female</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row302">
+                            <td class="">302</td>
+                            <td class="">RAJKUMAR SENANJIT</td>
+                            <td class="">3</td>
+                            <td class="">30</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row303">
+                            <td class="">303</td>
+                            <td class="">KUMAM CHAOBA</td>
+                            <td class="">4</td>
+                            <td class="">55</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row304">
+                            <td class="">304</td>
+                            <td class="">KUMAM PUSHPA</td>
+                            <td class="">4</td>
+                            <td class="">27</td>
+                            <td class="">Female</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row305">
+                            <td class="">305</td>
+                            <td class="">KUMAN JAMES</td>
+                            <td class="">4</td>
+                            <td class="">5</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row306">
+                            <td class="">306</td>
+                            <td class="">RAJKUMAR NABAKANTA</td>
+                            <td class="">8</td>
+                            <td class="">78</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row307">
+                            <td class="">307</td>
+                            <td class="">RAJKUMAR ROJITA</td>
+                            <td class="">8</td>
+                            <td class="">33</td>
+                            <td class="">Female</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row308">
+                            <td class="">308</td>
+                            <td class="">RAJKUMAR ARUNKUMAR</td>
+                            <td class="">3</td>
+                            <td class="">58</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row309">
+                            <td class="">309</td>
+                            <td class="">MOIRANGTHEM MANAO SINGH</td>
+                            <td class="">9</td>
+                            <td class="">67</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row310">
+                            <td class="">310</td>
+                            <td class="">MOIRANGTHEM KIRANKUMAR SINGH</td>
+                            <td class="">9</td>
+                            <td class="">34</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row311">
+                            <td class="">311</td>
+                            <td class="">LAMYANBA MOIRANGTHEM</td>
+                            <td class="">9</td>
+                            <td class="">1.7</td>
+                            <td class="">Male</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row312">
+                            <td class="">312</td>
+                            <td class="">WAHENGBAM DINAPATI DEVI</td>
+                            <td class="">9</td>
+                            <td class="">34</td>
+                            <td class="">Female</td>
+                            <td class="">29/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row313">
+                            <td class="">313</td>
+                            <td class="">ANGOM JAYADEBA</td>
+                            <td class="">2</td>
+                            <td class="">48</td>
+                            <td class="">Male</td>
+                            <td class="">30/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row314">
+                            <td class="">314</td>
+                            <td class="">A KIRAN SINGH</td>
+                            <td class="">6</td>
+                            <td class="">44</td>
+                            <td class="">Male</td>
+                            <td class="">30/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row315">
+                            <td class="">315</td>
+                            <td class="">KH VABINI DEVI</td>
+                            <td class="">14</td>
+                            <td class="">34</td>
+                            <td class="">Female</td>
+                            <td class="">30/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row316">
+                            <td class="">316</td>
+                            <td class="">PUKHRAMBAM BONODINI DEVI</td>
+                            <td class="">13</td>
+                            <td class="">82</td>
+                            <td class="">Male</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row317">
+                            <td class="">317</td>
+                            <td class="">I ACHOU SINGH</td>
+                            <td class="">4</td>
+                            <td class="">87</td>
+                            <td class="">Male</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row318">
+                            <td class="">318</td>
+                            <td class="">OINAM BABINA</td>
+                            <td class="">3</td>
+                            <td class="">20</td>
+                            <td class="">Female</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row319">
+                            <td class="">319</td>
+                            <td class="">OINAM RAJNI</td>
+                            <td class="">3</td>
+                            <td class="">15</td>
+                            <td class="">Female</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row320">
+                            <td class="">320</td>
+                            <td class="">MOIRANGTHEM RUHINI</td>
+                            <td class="">9</td>
+                            <td class="">44</td>
+                            <td class="">Female</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row321">
+                            <td class="">321</td>
+                            <td class="">MOIRANGTHEM MAHIMA</td>
+                            <td class="">9</td>
+                            <td class="">20</td>
+                            <td class="">Female</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row322">
+                            <td class="">322</td>
+                            <td class="">OINAM TOMBA</td>
+                            <td class="">10</td>
+                            <td class="">58</td>
+                            <td class="">Male</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row323">
+                            <td class="">323</td>
+                            <td class="">OINAM BIMOLA</td>
+                            <td class="">10</td>
+                            <td class="">57</td>
+                            <td class="">Female</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row324">
+                            <td class="">324</td>
+                            <td class="">KOIJAM PADAMABATI DEVI</td>
+                            <td class="">8</td>
+                            <td class="">48</td>
+                            <td class="">Female</td>
+                            <td class="">31/Jul</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row325">
+                            <td class="">325</td>
+                            <td class="">K DEBAJIT SINGH</td>
+                            <td class="">12</td>
+                            <td class="">37</td>
+                            <td class="">Male</td>
+                            <td class="">01/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row326">
+                            <td class="">326</td>
+                            <td class="">IRENGBAM SANAHANBI</td>
+                            <td class="">Kha Khunou GP-3</td>
+                            <td class="">62</td>
+                            <td class="">Female</td>
+                            <td class="">01/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row327">
+                            <td class="">327</td>
+                            <td class="">TAKHLLAMBAM INDUBALA</td>
+                            <td class="">5</td>
+                            <td class="">57</td>
+                            <td class="">Female</td>
+                            <td class="">01/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row328">
+                            <td class="">328</td>
+                            <td class="">ANGOM(O) SHUCHIRANI</td>
+                            <td class="">1</td>
+                            <td class="">60</td>
+                            <td class="">Female</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row329">
+                            <td class="">329</td>
+                            <td class="">MOIRANGTHEM IBOMCHA</td>
+                            <td class="">2</td>
+                            <td class="">76</td>
+                            <td class="">Male</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row330">
+                            <td class="">330</td>
+                            <td class="">MOIRANGTHEM JIBAN</td>
+                            <td class="">2</td>
+                            <td class="">41</td>
+                            <td class="">Male</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row331">
+                            <td class="">331</td>
+                            <td class="">MOIRANGTHEM DHANESHWORI</td>
+                            <td class="">2</td>
+                            <td class="">40</td>
+                            <td class="">Female</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row332">
+                            <td class="">332</td>
+                            <td class="">MOIRANGTHEM SUMILA</td>
+                            <td class="">2</td>
+                            <td class="">42</td>
+                            <td class="">Female</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row333">
+                            <td class="">333</td>
+                            <td class="">MOIRANGTHEM REBIKA</td>
+                            <td class="">2</td>
+                            <td class="">17</td>
+                            <td class="">Female</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row334">
+                            <td class="">334</td>
+                            <td class="">SALAM BIRACHANDRA SINGH</td>
+                            <td class="">10</td>
+                            <td class="">62</td>
+                            <td class="">Male</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row335">
+                            <td class="">335</td>
+                            <td class="">LAMABAM NUNGSHIREI</td>
+                            <td class="">14</td>
+                            <td class="">42</td>
+                            <td class="">Female</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row336">
+                            <td class="">336</td>
+                            <td class="">RK SUNITA</td>
+                            <td class="">11</td>
+                            <td class="">55</td>
+                            <td class="">Female</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row337">
+                            <td class="">337</td>
+                            <td class="">RAJKUMAR BONBONSANA SINGH</td>
+                            <td class="">11</td>
+                            <td class="">23</td>
+                            <td class="">Male</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row338">
+                            <td class="">338</td>
+                            <td class="">PUKHRAMBAM RUPACHANDRA SINGH</td>
+                            <td class="">13</td>
+                            <td class="">47</td>
+                            <td class="">Male</td>
+                            <td class="">02/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row339">
+                            <td class="">339</td>
+                            <td class="">N JOYKUMAR SINGH</td>
+                            <td class="">13</td>
+                            <td class="">18</td>
+                            <td class="">Male</td>
+                            <td class="">04/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                          <tr class="row340">
+                            <td class="">340</td>
+                            <td class="">N SHARAT SINGH</td>
+                            <td class="">13</td>
+                            <td class="">48</td>
+                            <td class="">Male</td>
+                            <td class="">04/Aug</td>
+                            <td class=""><span class="badge bg-primary">Active</span></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- TO DO List -->
+
+            <!-- /.card -->
+          </section>
+          <!-- /.Left col -->
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          <section class="col-lg-12">
+
+            <div class="row">
+              <!-- Map card -->
+              <div class="col-md-4 col-sm-6 col-12">
+                <div class="info-box">
+                  <div class="info-box-content">
+                    <span class="info-box-text">Chart Joinly Prepared by</span>
+                    <span class="info-box-number" id="today_date"></span>
+                  </div>
+
+                  <span class="info-box-icon"> <img src="nydo.jpeg" alt=""> </span> &nbsp;&nbsp;&nbsp;
+                  <span class="info-box-icon"> <img src="voices.jpeg" alt=""> </span>
+
+                  <!-- /.info-box-content -->
+                </div>
+            <!-- /.info-box -->
+              </div>
+
+              <div class="col-md-8 col-sm-6 col-12">
+                <div class="info-box bg-info">
+                  <p style="margin-bottom: 20px;font-size: 18px;">Recovery is calculated after 10 days from the date of confirmation. No fever for three days even after having a negative test entertained. After recovery, 7 days home isolation is to be maintained for Full-recovery.</p>
+
+                  <!-- /.info-box-content -->
+                </div>
+            <!-- /.info-box -->
+              </div>
+            </div>
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2021 <a href="https://shestrong.in" target="_blank">SheStrong Services</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
+
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+
+
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+
+
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.material.min.js"></script>
+
+<!-- Highcharts -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<!-- DataTables  & Plugins -->
+
+<script type="text/javascript">
+   var settings = {
+     "async": true,
+     "crossDomain": true,
+     "url": "contents.json",
+     "method": "GET"
+   }
+
+   $.ajax(settings).done(function (response) {
+     console.log(response);
+
+     var content = response.totalcovid;
+     $("#totalcovid").append(content);
+
+     var content = response.totalrecover;
+     $("#totalrecover").append(content);
+
+     var content = response.totalactive;
+     $("#totalactive").append(content);
+
+     var content = response.totaldead;
+     $("#totaldead").append(content);
+
+   });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+   var table =  $('#example').DataTable({
+     // "dom": 'rtS',
+     "dom": '<"top">rt<"bottom"i>rp<"clear">',
+     "order": [[ 0, "desc" ]],
+     initComplete: function () {
+        var column = this.api().column(2);
+        var select = $('<select class="filter select2 browser-default"><option value="">All</option></select>')
+            .appendTo('#selectTriggerFilter1')
+            .on('change', function () {
+               var val = $(this).val();
+               column.search(val ? '^' + $(this).val() + '$' : val, true, false).draw();
+            });
+        column.data().unique().sort().each(function (d, j) {
+            select.append('<option value="' + d + '">' + d + '</option>');
+        });
+     }
+   });
+
+   $('#mySearchfirst1').on( 'keyup click', function () {
+     table.table().columns(1).search($(this).val()  ).draw();
+   });
+
+   // $('#dropdown1').on('change', function () {
+   //     table.columns(4).search( this.value ).draw();
+   // } );
+
+   const dates = new Date().toUTCString().slice(5, 16);
+   document.getElementById("today_date").innerHTML = dates;
+
+ });
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    var options = {
+      chart: {
+        renderTo: 'container1',
+        type: 'column'
+      },
+      title: {
+        text: ''
+      },
+      subtitle: {
+        text: ''
+      },
+      plotOptions: {
+        column: {
+          depth: 0
+        }
+      },
+      series: [],
+      exporting: {
+        enabled: false,
+        // showTable: true
+      },
+      xAxis: {
+        categories: ['Ward No 1', 'Ward No 2', 'Ward No 3', 'Ward No 4', 'Ward No 5', 'Ward No 6', 'Ward No 7', 'Ward No 8', 'Ward No 9', 'Ward No 10', 'Ward No 11', 'Ward No 12', 'Ward No 13', 'Ward No 14', 'Kha Khunou GP-3', 'Kha Khunou GP-4']
+      },
+      yAxis: [{
+          title: { text: 'No. of COVID - 19 Case' },
+          gridLineColor: '#eeeeee',
+          gridLineWidth: 1,
+          reversedStacks: false,
+          labels: {
+            enabled: true
+          }
+      },
+      { // Secondary yAxis
+        title: {text: ""},
+    		gridLineColor: '#eeeeee',
+    		lineColor: '#eeeeee',
+    		tickColor: '#eeeeee',
+    		gridTextColor: '#eeeeee',
+        opposite: true
+      }],
+      plotOptions: {
+        column: {
+          pointWidth: 19,
+          borderColor: null
+        },
+        series: {
+          shadow: false,
+            label: {
+              connectorAllowed: false
+            },
+            dataLabels: {
+              enabled: true,
+              inside: true,
+              style: {
+                textOutline: 0,
+                color: '#111111'
+              }
+            },
+        }
+      },
+      credits: { enabled: false }
+
+    };
+
+    $.ajax({
+      type: "GET",
+      url: 'chartjson.json',
+      dataType: "json",
+      success: function(list) {
+        $.each(list, function(i, item) {
+          options.series.push({
+            name: item.name,
+            data: item.data,
+            color: item.color,
+            type: item.type,
+            id: item.id
+          });
+        });
+
+        var chart = new Highcharts.Chart(options);
+
+        // Activate the sliders
+        $('#sliders input').on('input change', function() {
+          showValues();
+          chart.redraw(false);
+        });
+        showValues();
+      }
+    });
+  },
+  function (chart) {
+         //Creating the dynamic custom legend
+         var amount = chart.series.length;
+         var $legend = $('#legend');
+         for(var i = 0; i < amount; i++) {
+           var disabled = "";
+            if (chart.series[i].visible == false) {
+              disabled = 'chart_disabled';
+            } else {
+              disabled = '';
+            }
+             $legend.append('<button class="legend_button '+ disabled +' " data-id="' + chart.series[i].options.id + '"><span style="color:' + chart.series[i].color  +  ';" class="fa fa-circle"></span> ' + chart.series[i].name + ' </button>');
+         }
+
+         // bind events to the custom legend
+         $(document).on('click', 'button', function (e) {
+             var el = e.target;
+                 id = el.getAttribute('data-id'),
+                 series = chart.get(id);
+                 series.setVisible(!series.visible);
+                 if (series.visible) {
+                      el.disabled = false;
+                      el.classList.remove("chart_disabled");
+                  } else {
+                      el.classList.add("chart_disabled");
+                  }
+         });
+       });
+
+</script>
+<style media="screen">
+  .bootstrap-datetimepicker-widget table {
+    height: 400px;
+  }
+  .small-box>.inner { height: 90px; }
+  .small-box { margin-bottom: 15px; }
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+    padding: 4px 10px;
+  }
+  .table-bordered th {
+    background: #555;
+    padding: 6px 10px;
+    color: #fff;
+  }
+  .bottom {width: 76%;}
+	.highcharts-series-label text { fill: transparent !important; }
+  #selectTriggerFilter1 select {
+    height: 30px;
+  }
+</style>
+
+</body>
+</html>
