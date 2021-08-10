@@ -157,10 +157,10 @@
                       <a class="nav-link active" href="#revenue-chart" data-toggle="tab"> <i class="far fa-chart-bar"></i> Wardwise view</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab"><i class="fas fa-table"></i> Name List</a>
+                      <a class="nav-link" href="#cumulative" data-toggle="tab"><i class="fas fa-table"></i> Cumulative View</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#cumulative" data-toggle="tab"><i class="fas fa-table"></i> Cumulative</a>
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab"><i class="fas fa-table"></i> Overall Report</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#dead_list" data-toggle="tab"><i class="fas fa-table"></i> Total Dead List</a>
@@ -172,15 +172,13 @@
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
                   <div class="chart tab-pane active" id="revenue-chart" style="position: relative;height: 400px;">
-                    <div class="" id="container1" style="height: 400px;width: 100%">
-
-                    </div>
+                    <div class="" id="container1" style="height: 400px;width: 100%"></div>
+                  </div>
+                  <div class="chart tab-pane" id="cumulative" style="position: relative; height: 100%;">
+                    <div class="" id="cumulative_chart" style="height: 450px;width: 100%">adad </div>
                   </div>
                   <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 100%;">
                     <div id="includeTable"></div>
-                  </div>
-                  <div class="chart tab-pane" id="cumulative" style="position: relative; height: 100%;">
-                    <div class="" id="cumulative_chart" style="height: 400px;width: 100%">adad </div>
                   </div>
                   <div class="chart tab-pane" id="dead_list" style="position: relative; height: 100%;">
                     <div id="includeDeadList"></div>
@@ -308,6 +306,76 @@
      });
 
    });
+</script>
+
+<script type="text/javascript">
+  Highcharts.stockChart('cumulative_chart', {
+
+    chart: {
+      type: 'column',
+      marginTop: 5
+    },
+
+    yAxis: {
+        title: { text: '' },
+        gridLineColor: '#fff',
+        gridLineWidth: 0,
+        reversedStacks: false,
+        labels: {
+        enabled: false
+      }
+    },
+
+    rangeSelector: {
+      selected: 1
+    },
+    legend: {
+    enabled: true
+    },
+
+    plotOptions: {
+    column: {
+        stacking: 'normal',
+        pointWidth: 55,
+        borderColor: null
+      },
+      series: {
+        /* compare: 'percent', */
+        showInNavigator: true,
+        dataLabels: {
+            enabled: true,
+            inside: true,
+            style: {
+              textOutline: 0
+            },
+            formatter: function() {
+              if (this.y > 0) {
+                return this.y;
+              }
+            }
+          }
+       }
+    },
+    credits: { enabled: false },
+    exporting: { enabled: false },
+    series: [
+    {
+      name: "Toda's Positive Case",
+      pointStart: Date.UTC(2021, 03, 18),
+      pointInterval: 24 * 3600 * 1000,
+      color: '#2f4b7c',
+      data: [2, 2, 5, 0, 1, 8, 4, 5, 9, 7, 8, 9, 15]
+    },
+    {
+      name: "Today's Dead Case",
+      pointStart: Date.UTC(2021, 03, 18),
+      pointInterval: 24 * 3600 * 1000,
+      color: '#a05195',
+      data: [2, 2, 5, 0, 1, 8, 4, 5, 9, 7, 8, 9, 15]
+    }
+    ]
+  });
+
 </script>
 
 
