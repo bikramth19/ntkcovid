@@ -119,6 +119,7 @@ var usdeur = [
 		[Date.UTC(2021, 07, 08), 1],
 		[Date.UTC(2021, 07, 09), 4],
 		[Date.UTC(2021, 07, 10), 4],
+		[Date.UTC(2021, 07, 10), 0],
 ];
 
 var ntk = [
