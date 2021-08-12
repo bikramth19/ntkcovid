@@ -81,7 +81,17 @@
 
     credits: { enabled: false },
     exporting: { enabled: false },
-    legend: { enabled: true },
+    legend: {
+      enabled: true,
+      floating: true,
+      align: 'center',
+      y: -40,
+      backgroundColor: '#eeeeee',
+      borderColor: '#2f4b7c',
+      borderWidth: 1,
+      borderRadius: 5,
+      verticalAlign: 'top'
+    },
 
     series: [{
         "name": "Positive Case",
