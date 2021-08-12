@@ -168,7 +168,7 @@
                   </ul>
                 </div>
               </div><!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body" style="padding: 2px;">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
                   <div class="chart tab-pane active" id="revenue-chart" style="position: relative;height: 400px;">
@@ -376,7 +376,11 @@
     var options = {
       chart: {
         renderTo: 'container1',
-        type: 'column'
+        type: 'column',
+        scrollablePlotArea: {
+          minWidth: 700,
+          scrollPositionX: 0
+        }
       },
       title: {
         text: ''
