@@ -54,7 +54,7 @@
       th.style16 { vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#0C0C0C; font-family:'Arial'; font-size:11pt; background-color:white }
       td.style17 { vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#0C0C0C; font-family:'Arial'; font-size:11pt; background-color:white }
       th.style17 { vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#0C0C0C; font-family:'Arial'; font-size:11pt; background-color:white }
-     
+
 </style>
 
 
@@ -87,8 +87,8 @@
                 </tr>
                </thead>
                 <tbody>
- 
-             
+
+
           <tr class="row1">
             <td class="column0 style4 f">1</td>
             <td class="column1 style5 f">MOIRANGTHEM JIBAN SINGH</td>
@@ -3909,15 +3909,15 @@
             <td class="column6 style4 f">0</td>
             <td class="column7 style10 f">ACTIVE</td>
           </tr>
-          
+
         </tbody>
     </table>
   </body>
 </html>
 
 
-  
-		
+
+
           </tbody>
                   </table>
                 </div>
@@ -3947,8 +3947,10 @@
 <script type="text/javascript">
   $(document).ready(function() {
    var table =  $('#example').DataTable({
-     // "dom": 'rtS',
-     "dom": '<"top">rt<"bottom"i>rp<"clear">',
+     "dom": 'rtS',
+     "aLengthMenu": [10000],
+     "deferRender": true,
+     // "dom": '<"top">rt<"bottom"i>rp<"clear">',
      "order": [[ 0, "desc" ]],
      initComplete: function () {
         var column = this.api().column(2);
@@ -4000,6 +4002,21 @@
   }
   #example tr td {
     font-size: 13px;
+  }
+  #example_wrapper {
+    height: 350px;
+    min-height: 359px;
+    overflow-y: auto;
+  }
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
   }
 </style>
 
