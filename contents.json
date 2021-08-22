@@ -1,8 +1,8 @@
 {
-  "totalcovid": 383,
-  "totalrecover": 337,
-  "totalactive": 27,
+  "totalcovid": 384,
+  "totalrecover": 345,
+  "totalactive": 20,
   "totaldead": 19,
-  "todaycovid": 1,
+  "todaycovid": 0,
   "todaydead": 0
 }
