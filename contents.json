@@ -1,8 +1,8 @@
 {
   "totalcovid": 404,
   "totalrecover": 372,
-  "totalactive": 13,
+  "totalactive": 11,
   "totaldead": 19,
-  "todaycovid": 2,
+  "todaycovid": 0,
   "todaydead": 0
 }
