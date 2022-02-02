@@ -52,9 +52,9 @@
     <ul class="navbar-nav ml-auto">
       <div class="select-wrapper">
         <select class="form-control" onchange="location = this.options[this.selectedIndex].value;" style="width: 100%;">
-          <option value="index.html"  selected="selected">2022</option>
+          <option value="index.html">2022</option>
 
-          <option value="index_2021.html" >2021</option>
+          <option value="index_2021.html" selected="selected">2021</option>
 
         </select>
       </div>
@@ -310,15 +310,15 @@
      $("#todaycovid").append(content);
 
      $(function(){
-         $("#includeTable").load("table_list_2022.html");
+         $("#includeTable").load("table_list.html");
      });
 
      $(function(){
-         $("#includeDeadList").load("dead_list_2022.html");
+         $("#includeDeadList").load("dead_list.html");
      });
 
      $(function(){
-         $("#includeCumulative").load("chartjs_2022.html");
+         $("#includeCumulative").load("chartjs.html");
      });
 
    });
@@ -458,7 +458,7 @@
 
     $.ajax({
       type: "GET",
-      url: 'chartjson_2022.json',
+      url: 'chartjson.json',
       dataType: "json",
       success: function(list) {
         $.each(list, function(i, item) {

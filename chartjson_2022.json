@@ -1,0 +1,39 @@
+[
+  {
+    "data": [0, 4, 3, 1, 0, 0, 0, 5, 0, 0, 1, 0, 2,1, 1, 2],
+    "name": "Total Dead Case",
+    "type": "column",
+    "id":"button1",
+    "color": "#F55C47"
+  },
+  {
+    "data": [9, 42, 37, 66, 11, 11, 8, 25, 17, 26, 28, 23, 23,41, 26, 10],
+    "name": "Fully Recovered Case",
+    "type": "column",
+    "id":"button2",
+    "color": "#4AA96C"
+  },
+  {
+    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0],
+    "name": "Total Active Case",
+    "type": "column",
+    "id":"button3",
+    "color": "#11698E"
+  },
+    {
+    "name": "Total Positive Case",
+    "type": "spline",
+    "color": "#ffa600",
+    "id":"button6",
+    "yAxis":1,
+    "data": [9, 46, 40, 67, 11, 11, 8, 30, 17, 26, 29, 23, 25,42, 27, 12]
+  },
+  {
+    "name": "Total +7 Days Isolation Case",
+    "type": "line",
+    "color": "#665191",
+    "id":"button7",
+    "yAxis":2,
+    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0]
+  }
+]

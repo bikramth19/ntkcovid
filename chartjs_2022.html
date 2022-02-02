@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div id="cumulative" style="height: 500px; min-width: 600px"></div>
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script type="text/javascript" src="cumulative.js"></script>
+
+<script type="text/javascript">
+      Highcharts.stockChart('cumulative', {
+
+		chart: {
+    	type: 'column'
+    },
+
+    navigator: {
+        height: 60
+    },
+
+    rangeSelector: {
+        buttons: [{
+            type: 'day',
+            count: 3,
+            text: '3d'
+        }, {
+            type: 'week',
+            count: 1,
+            text: '1w'
+        }, {
+            type: 'month',
+            count: 1,
+            text: '1m'
+        }, {
+            type: 'year',
+            count: 1,
+            text: '1y'
+        }, {
+            type: 'all',
+            text: 'All'
+        }],
+        selected: 1
+    },
+
+    yAxis: {
+        title: { text: '' },
+        gridLineColor: '#eee',
+        gridLineWidth: 1,
+        reversedStacks: false,
+        labels: {
+          enabled: true
+        }
+    },
+
+    plotOptions: {
+    column: {
+        stacking: 'normal',
+        pointWidth: 45
+      },
+      series: {
+        showInNavigator: true,
+        dataLabels: {
+            enabled: true,
+            inside: true,
+            style: {
+              textOutline: 0
+            },
+            formatter: function() {
+              if (this.y > 0) {
+                return this.y;
+              }
+            }
+          }
+       }
+    },
+
+    credits: { enabled: false },
+    exporting: { enabled: false },
+    legend: {
+      enabled: true,
+      floating: true,
+      align: 'center',
+      y: -40,
+      backgroundColor: '#eeeeee',
+      borderColor: '#ccc',
+      borderWidth: 1,
+      borderRadius: 5,
+      verticalAlign: 'top'
+    },
+
+    series: [{
+        "name": "Positive Case",
+        "color": "#2f4b7c",
+        pointStart: Date.UTC(2007, 10, 1),
+        pointInterval: 24 * 3600 * 1000,
+        data: usdeur
+    },
+    {
+      "name": "Dead Case",
+      "color": "#a05195",
+      data: ntk
+    }]
+  });
+</script>
+
+  </body>
+</html>
